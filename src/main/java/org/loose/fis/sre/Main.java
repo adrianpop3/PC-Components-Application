@@ -19,7 +19,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/starting_page.fxml")));
-        primaryStage.setTitle("PCA - STARTING");
+        primaryStage.setTitle("PCA - START");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
