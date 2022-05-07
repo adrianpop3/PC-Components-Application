@@ -10,6 +10,7 @@ import org.loose.fis.sre.services.UserService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -17,9 +18,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
-        primaryStage.setTitle("Registration Example");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/starting_page.fxml")));
+        primaryStage.setTitle("PCA - STARTING");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
