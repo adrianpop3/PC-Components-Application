@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="445.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="org.loose.fis.sre.controllers.RegistrationPageController">
+    <TextField id="emailreg" fx:id="email" layoutX="167.0" layoutY="144.0" prefHeight="28.0" prefWidth="263.0"
+               promptText="Enter your email"/>
+    <TextField id="password" fx:id="password" layoutX="167.0" layoutY="195.0" prefHeight="28.0" prefWidth="265.0"
+               promptText="Enter your password"/>
+    <TextField id="username" fx:id="username" layoutX="166.0" layoutY="95.0" prefHeight="28.0" prefWidth="265.0"
+               promptText="Enter your username"/>
+    <TextField id="passwordConfirmation" fx:id="passwordConfirmation" layoutX="167.0" layoutY="250.0" prefHeight="28.0" prefWidth="265.0"
+               promptText="Re-enter your password"/>
+    <PasswordField fx:id="hidpas1" layoutX="166.0" layoutY="196.0" prefHeight="26.0" prefWidth="265.0"
+                   promptText="Enter your password"/>
+    <PasswordField fx:id="hidpas2" layoutX="166.0" layoutY="251.0" prefHeight="26.0" prefWidth="265.0"
+                   promptText="Re-enter your password"/>
+    <Hyperlink fx:id="gotoLOGIN" layoutX="423.0" layoutY="372.0" onAction="#SwitchPage" text="Go to Login"/>
+    <CheckBox fx:id="news" layoutX="90.0" layoutY="375.0" mnemonicParsing="false" text="Newsletter"/>
+    <CheckBox id="checkterms" fx:id="terms" layoutX="90.0" layoutY="346.0" mnemonicParsing="false"
+              text="Terms and conditions"/>
+    <CheckBox fx:id="hide" layoutX="346.0" layoutY="346.0" mnemonicParsing="false" onAction="#ShowHide" prefHeight="8.0"
+              prefWidth="169.0" text="Show/Hide password"/>
+    <Button id="registerB" fx:id="registerB" layoutX="269.0" layoutY="395.0" mnemonicParsing="false"
+            onAction="#registerB" stylesheets="@../css/general_button.css" text="Register"/>
+    <Text layoutX="94.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username"/>
+    <Text layoutX="115.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email"/>
+    <Text layoutX="95.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password"/>
+    <Text layoutX="47.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password"/>
+    <Text layoutX="223.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's Register!"
+          wrappingWidth="169.4975832897269">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Text>
+    <Text layoutX="115.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role"
+          wrappingWidth="28.32421875"/>
+    <ComboBox id="combo" fx:id="comboBox" layoutX="166.0" layoutY="297.0" prefWidth="150.0"/>
+</AnchorPane>
+
