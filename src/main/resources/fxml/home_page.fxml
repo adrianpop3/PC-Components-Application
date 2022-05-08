@@ -7,70 +7,103 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.HomePageController">
 
-    <SplitPane dividerPositions="0.2644859813084112, 0.7560747663551401" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="1072.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-        <items>
-            <AnchorPane fx:id="Anchor1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="223.0">
-                <Separator layoutX="-5.0" layoutY="375.0" prefHeight="78.0" prefWidth="299.0" />
-                <Text fx:id="welcomeTxt" layoutX="50.0" layoutY="-72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="179.576171875" y="130.0">
-                    <font>
-                        <Font size="26.0" />
-                    </font>
-                </Text>
-                <Text layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of Products :" textAlignment="CENTER" wrappingWidth="280.0">
-                    <font>
-                        <Font size="19.0" />
-                    </font>
-                </Text>
-                <Button id="processors" fx:id="processors" layoutX="58.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0" stylesheets="@../css/general_button.css" text="Processors" />
-                <Button id="graphic" fx:id="graphic" layoutX="58.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0" stylesheets="@../css/general_button.css" text="Graphic Card" />
-                <Button id="ram" fx:id="ram" layoutX="58.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0" stylesheets="@../css/general_button.css" text="RAM" />
-                <Button id="ssdhdd" fx:id="ssdhdd" layoutX="58.0" layoutY="596.0" mnemonicParsing="false" onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0" stylesheets="@../css/general_button.css" text="SSD &amp; HDD" />
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/noProfilePic.png" />
-                    </image>
-                </ImageView>
-            </AnchorPane>
-            <AnchorPane prefHeight="794.0" prefWidth="537.0" style="-fx-background-color: #154a44;">
-                <Text fill="WHITE" layoutX="47.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="General Information :" textAlignment="CENTER" wrappingWidth="445.0">
-                    <font>
-                        <Font size="19.0" />
-                    </font>
-                </Text>
-                <TextArea editable="false" layoutX="33.0" layoutY="63.0" prefHeight="128.0" prefWidth="445.0" text="On the Home Page you can navigate through the application's functionalities.&#10;This application offers both customer and seller experience.&#10;The therms and conditions can be read at the bottom of this page. &#10;&#10;                              &#10;                                   This application was designed by Pop Adrian &amp; Pop Tudor." />
-                <Text fill="#cf0a0a" layoutX="55.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Therms and Conditions :" textAlignment="CENTER" wrappingWidth="428.0">
-                    <font>
-                        <Font size="19.0" />
-                    </font>
-                </Text>
-                <TextArea editable="false" layoutX="33.0" layoutY="588.0" prefHeight="191.0" prefWidth="445.0" text="Do NOT sell or purchase illegal items! Admins can view the orders and act&#10;in case of illegal activity. &#10;A customer must be a person older than 18 years old.&#10;A seller must be a person older than 18 years old.&#10;Your username should not have offensive character!&#10; &#10;&#10;                                                                                  For support, please contact :&#10;                                                                                  adrian.pop2@student.upt.ro&#10;                                                                                  tudor.pop@student.upt.ro" />
-                <ImageView fitHeight="242.0" fitWidth="446.0" layoutX="33.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../images/PC_components.jpg" />
-                </ImageView>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                <Button id="logout" fx:id="logout" layoutX="44.0" layoutY="732.0" mnemonicParsing="false" onAction="#handleLogOutAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/logout_button.css" text="Log out">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-                <Button id="add" fx:id="add" layoutX="38.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleAddProductAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="Add product" />
-                <Button id="delete" fx:id="delete" layoutX="85.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleDeleteProductAction" prefHeight="35.0" prefWidth="85.0" stylesheets="@../css/general_button.css" text="Delete" />
-                <Button id="edit" fx:id="edit" layoutX="85.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleEditProductAction" prefHeight="35.0" prefWidth="85.0" stylesheets="@../css/general_button.css" text="Edit" />
-                <Button id="placeOrder" fx:id="placeOrder" layoutX="38.0" layoutY="333.0" mnemonicParsing="false" onAction="#handlePlaceOrderAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="Place an Order" />
-                <Button id="approve" fx:id="approve" layoutX="38.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleApproveOrderAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="Accept/Decline Order" />
-                <Button id="status" fx:id="status" layoutX="38.0" layoutY="441.0" mnemonicParsing="false" onAction="#handleOnViewStatusAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="View order status" />
-                <Button id="sellerHistory" fx:id="sellerHistory" layoutX="38.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleOnSellerHistoryAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="Orders history" />
-                <Button id="customerHistory" fx:id="customerHistory" layoutX="38.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleOnCustomerHistoryAction" prefHeight="35.0" prefWidth="180.0" stylesheets="@../css/general_button.css" text="My orders history" />
-                <Text fx:id="services" layoutX="76.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Services :" wrappingWidth="116.59999999999991">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
-            <Separator layoutX="-6.0" layoutY="701.0" prefHeight="3.0" prefWidth="280.0" />
-            <Separator layoutY="103.0" prefHeight="3.0" prefWidth="272.0" />
-            </AnchorPane>
-        </items>
+    <SplitPane dividerPositions="0.2644859813084112, 0.7560747663551401" maxHeight="-Infinity" maxWidth="-Infinity"
+               minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="1072.0"
+               xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="128.0">
+            <Separator layoutX="-5.0" layoutY="375.0" prefHeight="78.0" prefWidth="299.0"/>
+            <Text fx:id="welcomeTxt" layoutX="50.0" layoutY="-72.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Welcome!" textAlignment="CENTER" wrappingWidth="179.576171875" y="130.0">
+                <font>
+                    <Font size="26.0"/>
+                </font>
+            </Text>
+            <Text layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of Products :"
+                  textAlignment="CENTER" wrappingWidth="280.0">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+            </Text>
+            <Button id="processors" fx:id="processors" layoutX="58.0" layoutY="435.0" mnemonicParsing="false"
+                    onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0"
+                    stylesheets="@../css/general_button.css" text="Processors"/>
+            <Button id="graphic" fx:id="graphic" layoutX="58.0" layoutY="488.0" mnemonicParsing="false"
+                    onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0"
+                    stylesheets="@../css/general_button.css" text="Graphic Card"/>
+            <Button id="ram" fx:id="ram" layoutX="58.0" layoutY="543.0" mnemonicParsing="false"
+                    onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0"
+                    stylesheets="@../css/general_button.css" text="RAM"/>
+            <Button id="ssdhdd" fx:id="ssdhdd" layoutX="58.0" layoutY="596.0" mnemonicParsing="false"
+                    onAction="#handleLinkToCategoriesAction" prefHeight="35.0" prefWidth="155.0"
+                    stylesheets="@../css/general_button.css" text="SSD &amp; HDD"/>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="151.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../images/noProfilePic.png"/>
+            </ImageView>
+        </AnchorPane>
+        <AnchorPane prefHeight="794.0" prefWidth="537.0" style="-fx-background-color: #154a44;">
+            <Text fill="WHITE" layoutX="47.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="General Information :" textAlignment="CENTER" wrappingWidth="445.0">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+            </Text>
+            <TextArea editable="false" layoutX="33.0" layoutY="63.0" prefHeight="128.0" prefWidth="445.0"
+                      text="On the Home Page you can navigate through the application's functionalities.&#10;This application offers both customer and seller experience.&#10;The therms and conditions can be read at the bottom of this page. &#10;&#10;                              &#10;                                   This application was designed by Pop Adrian &amp; Pop Tudor."/>
+            <Text fill="#cf0a0a" layoutX="55.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Therms and Conditions :" textAlignment="CENTER" wrappingWidth="428.0">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+            </Text>
+            <TextArea editable="false" layoutX="33.0" layoutY="588.0" prefHeight="191.0" prefWidth="445.0"
+                      text="Do NOT sell or purchase illegal items! Admins can view the orders and act&#10;in case of illegal activity. &#10;A customer must be a person older than 18 years old.&#10;A seller must be a person older than 18 years old.&#10;Your username should not have offensive character!&#10; &#10;&#10;                                                                                  For support, please contact :&#10;                                                                                  adrian.pop2@student.upt.ro&#10;                                                                                  tudor.pop@student.upt.ro"/>
+            <ImageView fitHeight="242.0" fitWidth="446.0" layoutX="33.0" layoutY="252.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../images/PC_components.jpg"/>
+            </ImageView>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <Button id="logout" fx:id="logout" layoutX="44.0" layoutY="732.0" mnemonicParsing="false"
+                    onAction="#handleLogOutAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/logout_button.css" text="Log out">
+                <font>
+                    <Font name="System Bold" size="13.0"/>
+                </font>
+            </Button>
+            <Button id="add" fx:id="add" layoutX="38.0" layoutY="125.0" mnemonicParsing="false"
+                    onAction="#handleAddProductAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="Add product"/>
+            <Button id="delete" fx:id="delete" layoutX="85.0" layoutY="178.0" mnemonicParsing="false"
+                    onAction="#handleDeleteProductAction" prefHeight="35.0" prefWidth="85.0"
+                    stylesheets="@../css/general_button.css" text="Delete"/>
+            <Button id="edit" fx:id="edit" layoutX="85.0" layoutY="227.0" mnemonicParsing="false"
+                    onAction="#handleEditProductAction" prefHeight="35.0" prefWidth="85.0"
+                    stylesheets="@../css/general_button.css" text="Edit"/>
+            <Button id="placeOrder" fx:id="placeOrder" layoutX="38.0" layoutY="333.0" mnemonicParsing="false"
+                    onAction="#handlePlaceOrderAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="Place an Order"/>
+            <Button id="approve" fx:id="approve" layoutX="38.0" layoutY="492.0" mnemonicParsing="false"
+                    onAction="#handleApproveOrderAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="Accept/Decline Order"/>
+            <Button id="status" fx:id="status" layoutX="38.0" layoutY="441.0" mnemonicParsing="false"
+                    onAction="#handleOnViewStatusAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="View order status"/>
+            <Button id="sellerHistory" fx:id="sellerHistory" layoutX="38.0" layoutY="282.0" mnemonicParsing="false"
+                    onAction="#handleOnSellerHistoryAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="Orders history"/>
+            <Button id="customerHistory" fx:id="customerHistory" layoutX="38.0" layoutY="385.0" mnemonicParsing="false"
+                    onAction="#handleOnCustomerHistoryAction" prefHeight="35.0" prefWidth="180.0"
+                    stylesheets="@../css/general_button.css" text="My orders history"/>
+            <Text layoutX="76.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Services :" wrappingWidth="116.59999999999991">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Text>
+        <Separator layoutX="-6.0" layoutY="701.0" prefHeight="3.0" prefWidth="280.0"/>
+        <Separator layoutY="103.0" prefHeight="3.0" prefWidth="272.0"/>
+        </AnchorPane>
     </SplitPane>
 
 </AnchorPane>
