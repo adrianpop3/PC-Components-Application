@@ -26,7 +26,7 @@ public class StartingPageController {
         }
         if (event.getSource() == registrationButton) {
             stage = (Stage) registrationButton.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/register.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/registration_page.fxml")));
             stage.setTitle("PCA - REGISTRATION");
         }
 
