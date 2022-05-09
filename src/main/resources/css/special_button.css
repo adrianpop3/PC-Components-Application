@@ -1,7 +1,7 @@
 .button{
-    -fx-background-color: #ffffff; -fx-text-fill: red;
+    -fx-background-color: #8a6a57; -fx-text-fill: #A31010;
 }
 
 .button:hover{
-    -fx-background-color: red; -fx-text-fill: #ffffff;
+    -fx-background-color: #A31010; -fx-text-fill: #8a6a57;
 }
