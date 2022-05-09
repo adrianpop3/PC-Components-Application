@@ -30,7 +30,21 @@ public class RegistrationPageController {
     }
 
     public void handlePasswordVisibilityAction() {
-        // To be done
+        if (this.passwordVisibility.isSelected()) {
+            this.password.setText(this.hiddenPassword.getText());
+            this.passwordConfirmation.setText(this.hiddenPasswordConfirmation.getText());
+            this.password.setVisible(true);
+            this.passwordConfirmation.setVisible(true);
+            this.hiddenPassword.setVisible(false);
+            this.hiddenPasswordConfirmation.setVisible(false);
+        } else {
+            this.hiddenPassword.setText(this.password.getText());
+            this.hiddenPasswordConfirmation.setText(this.passwordConfirmation.getText());
+            this.password.setVisible(false);
+            this.passwordConfirmation.setVisible(false);
+            this.hiddenPassword.setVisible(true);
+            this.hiddenPasswordConfirmation.setVisible(true);
+        }
     }
 
     public void handleLinkToLoginAction(ActionEvent event) throws Exception {
