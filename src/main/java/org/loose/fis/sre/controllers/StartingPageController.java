@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-
 public class StartingPageController {
 
     @FXML
@@ -21,12 +19,12 @@ public class StartingPageController {
         if (event.getSource() == loginButton) {
             stage = (Stage) loginButton.getScene().getWindow();
             // login_page NOT implemented yet
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/login_page.fxml")));
+            root = FXMLLoader.load(getClass().getResource("/fxml/login_page.fxml"));
             stage.setTitle("PCA - LOGIN");
         }
         if (event.getSource() == registrationButton) {
             stage = (Stage) registrationButton.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/registration_page.fxml")));
+            root = FXMLLoader.load(getClass().getResource("/fxml/registration_page.fxml"));
             stage.setTitle("PCA - REGISTRATION");
         }
 
