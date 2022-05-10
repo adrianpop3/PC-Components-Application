@@ -17,16 +17,17 @@ public class UserService {
     private static ObjectRepository<User> userRepository;
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("pc-components-application.db").toFile())
+                .filePath(getPathToFile("User.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, String role, int id) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        userRepository.insert(new User(username, encodePassword(username, password), role, id));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -55,6 +56,15 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static boolean verifyUserId(int userId) {
+        for (User user : userRepository.find()) {
+            if (userId == user.getUserId()) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

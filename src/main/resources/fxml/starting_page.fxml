@@ -10,17 +10,17 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.loose.fis.sre.controllers.StartingPageController"
-            prefHeight="288.0" prefWidth="541.0">
+            prefHeight="288.0" prefWidth="541.0" style="-fx-background-color: #154a44">
     <Text layoutX="63.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!"
-          wrappingWidth="84.986328125">
+          wrappingWidth="115" style="-fx-fill: #8a6a57; -fx-font-weight: bold">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="26.0"/>
         </font>
     </Text>
     <Text layoutX="63.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where do you want to go?"
-          wrappingWidth="222.09375">
+          wrappingWidth="222" style="-fx-fill: #8a6a57;">
         <font>
-            <Font size="14.0"/>
+            <Font size="20.0"/>
         </font>
     </Text>
     <Button id="login" fx:id="loginButton" layoutX="63.0" layoutY="175.0" mnemonicParsing="false"
@@ -29,8 +29,8 @@
     <Button id="registration" fx:id="registrationButton" layoutX="190.0" layoutY="175.0" mnemonicParsing="false"
             onAction="#handleLinkToRegistrationOrLoginAction" stylesheets="@../css/special_button.css"
             text="Registration Page"/>
-    <Text layoutX="163.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or"/>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="313.0" layoutY="17.0" pickOnBounds="true"
+    <Text layoutX="157.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or" style="-fx-fill: #8a6a57; -fx-font-size: 18"/>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="53.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@../images/pca_logo.png"/>
     </ImageView>
