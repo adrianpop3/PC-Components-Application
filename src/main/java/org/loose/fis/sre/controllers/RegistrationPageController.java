@@ -3,6 +3,7 @@ package org.loose.fis.sre.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,8 +24,6 @@ public class RegistrationPageController {
     private CheckBox termsCheckBox, passwordVisibility;
     @FXML
     private PasswordField hiddenPassword, hiddenPasswordConfirmation;
-    @FXML
-    private Hyperlink linkToLogin;
     @FXML
     private ComboBox roleComboBox;
 
@@ -148,15 +147,11 @@ public class RegistrationPageController {
     }
 
     public void handleLinkToLoginAction(ActionEvent event) throws Exception {
-        if (event.getSource() == this.linkToLogin) {
-            this.stage = (Stage) this.linkToLogin.getScene().getWindow();
-            // login page NOT implemented yet
-            this.root = FXMLLoader.load(this.getClass().getResource("/fxml/login_page.fxml"));
-            Scene scene = new Scene(this.root);
-            this.stage.setTitle("Login Page");
-            this.stage.setScene(scene);
-            this.stage.show();
-        }
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        root = FXMLLoader.load(this.getClass().getResource("/fxml/login_page.fxml"));
+        Scene scene = new Scene(this.root);
+        this.stage.setTitle("PCA - LOGIN");
+        this.stage.setScene(scene);
+        this.stage.show();
     }
-
 }
