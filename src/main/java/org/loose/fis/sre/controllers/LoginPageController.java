@@ -28,7 +28,17 @@ public class LoginPageController {
     }
 
     public void handlePasswordVisibilityAction() {
-        // To be implemented
+        if (passwordVisibility.isSelected()) {
+            password.setText(hiddenPassword.getText());
+            password.setVisible(true);
+            hiddenPassword.setVisible(false);
+            hiddenPassword.setText(password.getText());
+            return;
+        }
+        hiddenPassword.setText(password.getText());
+        hiddenPassword.setVisible(true);
+        password.setVisible(false);
+        password.setText(hiddenPassword.getText());
     }
 
     public void handleLinkToRegistrationAction(ActionEvent event) throws Exception {
