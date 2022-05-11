@@ -30,14 +30,14 @@ public class RegistrationPageController {
     private Parent root;
     private Stage stage;
 
-    private Alert alertFieldEmpty, alertTermsConditions, alertUsernameExists, alertPasswordIncorect;
+    private Alert alertFieldEmpty, alertTermsConditions, alertUsernameExists, alertPasswordIncorrect;
     private Button myButton;
 
     public RegistrationPageController() {
         this.alertFieldEmpty = new Alert(AlertType.ERROR);
         this.alertTermsConditions = new Alert(AlertType.ERROR);
         this.alertUsernameExists = new Alert(AlertType.ERROR);
-        this.alertPasswordIncorect = new Alert(AlertType.ERROR);
+        this.alertPasswordIncorrect = new Alert(AlertType.ERROR);
     }
 
     @FXML
@@ -64,12 +64,12 @@ public class RegistrationPageController {
                 }
 
                 if (!password.getText().equals(passwordConfirmation.getText())) {
-                    alertPasswordIncorect.setHeaderText(null);
-                    alertPasswordIncorect.setTitle("Passwords don't match");
-                    alertPasswordIncorect.setContentText("Please check your password again!");
-                    myButton = (Button) alertPasswordIncorect.getDialogPane().lookupButton(ButtonType.OK);
+                    alertPasswordIncorrect.setHeaderText(null);
+                    alertPasswordIncorrect.setTitle("Passwords don't match");
+                    alertPasswordIncorrect.setContentText("Please check your password again!");
+                    myButton = (Button) alertPasswordIncorrect.getDialogPane().lookupButton(ButtonType.OK);
                     myButton.setId("test");
-                    alertPasswordIncorect.showAndWait();
+                    alertPasswordIncorrect.showAndWait();
                     password.clear();
                     passwordConfirmation.clear();
                     hiddenPasswordConfirmation.clear();
@@ -108,7 +108,7 @@ public class RegistrationPageController {
                 // home_page NOT implemented yet
                 this.root = FXMLLoader.load(this.getClass().getResource("/fxml/home_page.fxml"));
                 Scene scene = new Scene(this.root);
-                this.stage.setTitle("CCP - HOME");
+                this.stage.setTitle("PCA - HOME");
                 this.stage.setScene(scene);
                 this.stage.show();
             }
