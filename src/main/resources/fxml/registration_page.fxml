@@ -42,7 +42,7 @@
               text="Terms &amp; conditions" style="-fx-text-fill: #8a6a57;"/>
 
     <!-- link to login -->
-    <Hyperlink fx:id="linkToLogin" layoutX="270" layoutY="298" onAction="#handleLinkToLoginAction" style="-fx-text-fill: #8a6a57;" text="Already Have an account? Log In"/>
+    <Hyperlink layoutX="270" layoutY="298" onAction="#handleLinkToLoginAction" style="-fx-text-fill: #8a6a57;" text="Already Have an account? Log In"/>
 
     <Button id="registrationButton" fx:id="registrationButton" layoutX="225.0" layoutY="340.0" prefHeight="30" prefWidth="100" mnemonicParsing="false"
             onAction="#handleRegistrationAction" stylesheets="@../css/special_button.css" text="Register"/>

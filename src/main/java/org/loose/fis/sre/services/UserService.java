@@ -67,5 +67,16 @@ public class UserService {
         return false;
     }
 
+    public static boolean verifyUsernamePassword(String username, String password) {
+        String password1 = encodePassword(username, password);
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                if (password1.equals(user.getPassword()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
 
 }
