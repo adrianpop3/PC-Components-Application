@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="771.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.products.processors.Processors">
+    <SplitPane dividerPositions="0.27551803530314656" prefHeight="771.0" prefWidth="1044.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #154a44;">
+            <Button id="close" fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHomePage" prefHeight="27.0" prefWidth="89.0" stylesheets="@../css/general_button.css" text="Back">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+            </Button>
+            <Text fill="#8a6a57" layoutX="74.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information:" textAlignment="CENTER" wrappingWidth="136.873046875">
+                <font>
+                    <Font size="19.0" />
+                </font>
+            </Text>
+            <Text fill="WHITE" layoutX="24.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. This is one of the most important components in your personal computer. Pay attention when making your choise. Luckily, our online application offers you a large amount of products. " wrappingWidth="252.60000801086426">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </Text>
+        </AnchorPane>
+        <AnchorPane fx:id="anchorPaneRight" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+    </SplitPane>
+</AnchorPane>
