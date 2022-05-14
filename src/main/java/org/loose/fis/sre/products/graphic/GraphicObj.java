@@ -1,22 +1,22 @@
-package org.loose.fis.sre.products.processors;
+package org.loose.fis.sre.products.graphic;
 
-public class ProcessorsObj {
+public class GraphicObj {
 
     private String numeProdus;
     private String pret;
-    private String arhitectura;
+    private String model;
     private String descriere;
     private String garantie;
     private int id;
 
     //Constructors:
 
-    public ProcessorsObj() {}
+    public GraphicObj() {}
 
-    public ProcessorsObj (String numeProdus, String pret, String arhitectura, String descriere, String garantie, int id) {
+    public GraphicObj (String numeProdus, String pret, String model, String descriere, String garantie, int id) {
         this.numeProdus = numeProdus;
         this.pret = pret;
-        this.arhitectura = arhitectura;
+        this.model = model;
         this.descriere = descriere;
         this.garantie = garantie;
         this.id = id;
@@ -32,8 +32,8 @@ public class ProcessorsObj {
         return pret;
     }
 
-    public String getArhitectura() {
-        return arhitectura;
+    public String getModel() {
+        return model;
     }
 
     public String getDescriere() {
@@ -54,8 +54,8 @@ public class ProcessorsObj {
         this.pret = pret;
     }
 
-    public void setArhitectura (String arhitectura) {
-        this.arhitectura = arhitectura;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public void setDescriere(String descriere) {
