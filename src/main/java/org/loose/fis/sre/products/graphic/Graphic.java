@@ -1,14 +1,33 @@
 package org.loose.fis.sre.products.graphic;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class Graphic {
+
+    @FXML
     public Button back;
+
+    @FXML
     public AnchorPane anchorPaneRight;
 
-    public void BackToHomePage(ActionEvent actionEvent) {
-        //to be done
+    private Stage stage;
+    private Parent root;
+
+    public void BackToHomePage(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == back) {
+            stage = (Stage) back.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/home_page.fxml"));
+        }
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
