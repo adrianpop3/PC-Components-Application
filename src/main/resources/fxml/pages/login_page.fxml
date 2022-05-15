@@ -24,14 +24,14 @@
         <PasswordField fx:id="hiddenPassword" layoutX="145.0" layoutY="220" prefHeight="28.0" prefWidth="265.0"
                        promptText="Enter your password"/>
 
-        <Button id="login" fx:id="loginButton" layoutX="160.0" layoutY="265.0" prefHeight="30" prefWidth="100" mnemonicParsing="false" onAction="#handleLoginAction" stylesheets="@../css/special_button.css" text="Login" />
+        <Button id="login" fx:id="loginButton" layoutX="160.0" layoutY="265.0" prefHeight="30" prefWidth="100" mnemonicParsing="false" onAction="#handleLoginAction" stylesheets="@../../css/special_button.css" text="Login" />
 
         <CheckBox fx:id="passwordVisibility" layoutX="285.0" layoutY="270.0" mnemonicParsing="false" onAction="#handlePasswordVisibilityAction" text="Show password" style="-fx-text-fill: #8a6a57;"/>
 
         <Hyperlink id="linkToRegistration" layoutX="170.0" layoutY="310.0" onAction="#handleLinkToRegistrationAction" text="Don't have an account yet? Register" style="-fx-text-fill: #8a6a57;"/>
 
         <ImageView fitHeight="130" fitWidth="130" layoutX="210.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/pca_logo.png" />
+                <Image url="@../../images/pca_logo.png" />
         </ImageView>
 
 </AnchorPane>

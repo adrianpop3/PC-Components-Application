@@ -32,24 +32,24 @@ public class HomePageController {
         if (actionEvent.getSource() == processors) {
             stage = (Stage) processors.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/processors_page.fxml")); //processors_page.fxml - to be done
-            stage.setTitle("PCA - PROCESSORS");
+            stage.setTitle("PCA - PROCESSOR");
         }
 
         if (actionEvent.getSource() == graphic) {
             stage = (Stage) graphic.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic.fxml")); //graphic.fxml - to be done
-            stage.setTitle("PCA - GRAPHIC CARDS");
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic_page.fxml")); //graphic.fxml - to be done
+            stage.setTitle("PCA - GRAPHIC CARD");
         }
 
         if (actionEvent.getSource() == ram) {
             stage = (Stage) ram.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram.fxml")); //ram.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram_page.fxml")); //ram.fxml - to be done
             stage.setTitle("PCA - RAM");
         }
 
         if (actionEvent.getSource() == ssdhdd) {
             stage = (Stage) ssdhdd.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd.fxml")); //ssdhdd.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd_page.fxml")); //ssdhdd.fxml - to be done
             stage.setTitle("PCA - SSD & HDD");
         }
 
@@ -103,7 +103,7 @@ public class HomePageController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         welcomeMessage.setText("Glad to have you back, " + username + "!");
     }
 }
