@@ -68,7 +68,7 @@ public class GraphicObj {
 
     @Override
     public String toString() {
-        return numeProdus + " " + pret + " " + descriere + " " + garantie;
+        return numeProdus + " " + pret + " " + model + " " + descriere + " " + garantie;
     }
 
 }
