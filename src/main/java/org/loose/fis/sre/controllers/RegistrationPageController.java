@@ -104,9 +104,11 @@ public class RegistrationPageController {
                 } while (UserService.verifyUserId(userId));
 
                 UserService.addUser(username.getText(), password.getText(), roleComboBox.getSelectionModel().getSelectedItem().toString(), userId);
+
+                HomePageController.setUsername(username.getText());
                 this.stage = (Stage) this.registrationButton.getScene().getWindow();
-                // home_page NOT implemented yet
-                this.root = FXMLLoader.load(this.getClass().getResource("/fxml/home_page.fxml"));
+                this.root = FXMLLoader.load(this.getClass().getResource("/fxml/pages/home_page.fxml"));
+
                 Scene scene = new Scene(this.root);
                 this.stage.setTitle("PCA - HOME");
                 this.stage.setScene(scene);
@@ -148,7 +150,7 @@ public class RegistrationPageController {
 
     public void handleLinkToLoginAction(ActionEvent event) throws Exception {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        root = FXMLLoader.load(this.getClass().getResource("/fxml/login_page.fxml"));
+        root = FXMLLoader.load(this.getClass().getResource("/fxml/pages/login_page.fxml"));
         Scene scene = new Scene(this.root);
         this.stage.setTitle("PCA - LOGIN");
         this.stage.setScene(scene);

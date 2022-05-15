@@ -58,9 +58,9 @@ public class LoginPageController {
                 hiddenPassword.clear();
                 return;
             }
-            // NOT implemented yet add method for seller or customer
+            HomePageController.setUsername(username.getText());
             stage = (Stage) loginButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/home_page.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/home_page.fxml"));
         }
 
         Scene scene = new Scene(root);
@@ -85,7 +85,7 @@ public class LoginPageController {
 
     public void handleLinkToRegistrationAction(ActionEvent event) throws Exception {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/fxml/registration_page.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/pages/registration_page.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("PCA - REGISTRATION");
         stage.setScene(scene);
