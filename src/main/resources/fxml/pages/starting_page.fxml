@@ -24,14 +24,14 @@
         </font>
     </Text>
     <Button id="login" fx:id="loginButton" layoutX="63.0" layoutY="175.0" mnemonicParsing="false"
-            onAction="#handleLinkToRegistrationOrLoginAction" stylesheets="@../css/special_button.css"
+            onAction="#handleLinkToRegistrationOrLoginAction" stylesheets="@../../css/special_button.css"
             text="Login Page"/>
     <Button id="registration" fx:id="registrationButton" layoutX="190.0" layoutY="175.0" mnemonicParsing="false"
-            onAction="#handleLinkToRegistrationOrLoginAction" stylesheets="@../css/special_button.css"
+            onAction="#handleLinkToRegistrationOrLoginAction" stylesheets="@../../css/special_button.css"
             text="Registration Page"/>
     <Text layoutX="157.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or" style="-fx-fill: #8a6a57; -fx-font-size: 18"/>
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="53.0" pickOnBounds="true"
                preserveRatio="true">
-        <Image url="@../images/pca_logo.png"/>
+        <Image url="@../../images/pca_logo.png"/>
     </ImageView>
 </AnchorPane>

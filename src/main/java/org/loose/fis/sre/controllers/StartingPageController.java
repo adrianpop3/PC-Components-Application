@@ -18,13 +18,12 @@ public class StartingPageController {
     public void handleLinkToRegistrationOrLoginAction(ActionEvent event) throws Exception {
         if (event.getSource() == loginButton) {
             stage = (Stage) loginButton.getScene().getWindow();
-            // login_page NOT implemented yet
-            root = FXMLLoader.load(getClass().getResource("/fxml/login_page.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/login_page.fxml"));
             stage.setTitle("PCA - LOGIN");
         }
         if (event.getSource() == registrationButton) {
             stage = (Stage) registrationButton.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/registration_page.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/registration_page.fxml"));
             stage.setTitle("PCA - REGISTRATION");
         }
 
