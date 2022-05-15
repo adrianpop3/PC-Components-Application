@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static org.loose.fis.sre.services.UserService.checkUserRole;
+
 public class HomePageController {
 
     @FXML
@@ -102,8 +104,31 @@ public class HomePageController {
         //to be done
     }
 
+    private void checkRoleForButtonVisibility() {
+        if (checkUserRole(username).equals("Customer")) {
+            add.setVisible(false);
+            edit.setVisible(false);
+            delete.setVisible(false);
+            placeOrder.setVisible(true);
+            approve.setVisible(false);
+            status.setVisible(true);
+            sellerHistory.setVisible(false);
+            customerHistory.setVisible(true);
+        } else {
+            add.setVisible(true);
+            edit.setVisible(true);
+            delete.setVisible(true);
+            placeOrder.setVisible(false);
+            approve.setVisible(true);
+            status.setVisible(false);
+            sellerHistory.setVisible(true);
+            customerHistory.setVisible(false);
+        }
+    }
+
     @FXML
     public void initialize() {
         welcomeMessage.setText("Glad to have you back, " + username + "!");
+        checkRoleForButtonVisibility();
     }
 }

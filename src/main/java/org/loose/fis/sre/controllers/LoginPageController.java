@@ -58,6 +58,7 @@ public class LoginPageController {
                 hiddenPassword.clear();
                 return;
             }
+
             HomePageController.setUsername(username.getText());
             stage = (Stage) loginButton.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/home_page.fxml"));
