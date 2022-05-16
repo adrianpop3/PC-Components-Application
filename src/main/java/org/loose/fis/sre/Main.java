@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/starting_page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/pages/starting_page.fxml"));
         primaryStage.setTitle("PCA - START");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -9,10 +9,18 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static org.loose.fis.sre.services.UserService.checkUserRole;
+
 public class HomePageController {
 
     @FXML
-    private Text welcomeTxt;
+    private Text welcomeMessage;
+
+    private static String username;
+
+    public static void setUsername(String userName) {
+        username = userName;
+    }
 
     @FXML
     private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
@@ -23,28 +31,28 @@ public class HomePageController {
 
     public void handleLinkToCategoriesAction(ActionEvent actionEvent) throws Exception {
 
-        if(actionEvent.getSource() == processors){
+        if (actionEvent.getSource() == processors) {
             stage = (Stage) processors.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/processors_page.fxml")); //processors_page.fxml - to be done
-            stage.setTitle("Processors");
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/processors_page.fxml")); //processors_page.fxml - to be done
+            stage.setTitle("PCA - PROCESSOR");
         }
 
-        if(actionEvent.getSource() == graphic){
+        if (actionEvent.getSource() == graphic) {
             stage = (Stage) graphic.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/graphic.fxml")); //graphic.fxml - to be done
-            stage.setTitle("Graphic Card");
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic_page.fxml")); //graphic.fxml - to be done
+            stage.setTitle("PCA - GRAPHIC CARD");
         }
 
-        if(actionEvent.getSource() == ram){
+        if (actionEvent.getSource() == ram) {
             stage = (Stage) ram.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/ram.fxml")); //ram.fxml - to be done
-            stage.setTitle("RAM");
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram_page.fxml")); //ram.fxml - to be done
+            stage.setTitle("PCA - RAM");
         }
 
-        if(actionEvent.getSource() == ssdhdd){
+        if (actionEvent.getSource() == ssdhdd) {
             stage = (Stage) ssdhdd.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/ssdhdd.fxml")); //ssdhdd.fxml - to be done
-            stage.setTitle("SSD & HDD");
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd_page.fxml")); //ssdhdd.fxml - to be done
+            stage.setTitle("PCA - SSD & HDD");
         }
 
         Scene scene = new Scene(root);
@@ -53,7 +61,15 @@ public class HomePageController {
     }
 
     public void handleLogOutAction(ActionEvent actionEvent) throws Exception {
-        //to be done
+        if (actionEvent.getSource() == logout) {
+            stage = (Stage) logout.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/login_page.fxml"));
+        }
+
+        stage.setTitle("PCA - LOGIN");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleAddProductAction(ActionEvent actionEvent) {
@@ -86,5 +102,33 @@ public class HomePageController {
 
     public void handleOnCustomerHistoryAction(ActionEvent actionEvent) {
         //to be done
+    }
+
+    private void checkRoleForButtonVisibility() {
+        if (checkUserRole(username).equals("Customer")) {
+            add.setVisible(false);
+            edit.setVisible(false);
+            delete.setVisible(false);
+            placeOrder.setVisible(true);
+            approve.setVisible(false);
+            status.setVisible(true);
+            sellerHistory.setVisible(false);
+            customerHistory.setVisible(true);
+        } else {
+            add.setVisible(true);
+            edit.setVisible(true);
+            delete.setVisible(true);
+            placeOrder.setVisible(false);
+            approve.setVisible(true);
+            status.setVisible(false);
+            sellerHistory.setVisible(true);
+            customerHistory.setVisible(false);
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        welcomeMessage.setText("Glad to have you back, " + username + "!");
+        checkRoleForButtonVisibility();
     }
 }

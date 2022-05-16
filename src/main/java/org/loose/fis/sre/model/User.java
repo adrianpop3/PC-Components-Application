@@ -14,6 +14,9 @@ public class User {
         this.userId = userId;
     }
 
+    public User() {
+    }
+
     public String getUsername() {
         return username;
     }
@@ -24,6 +27,10 @@ public class User {
 
     public int getUserId() {
         return userId;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     @Override
