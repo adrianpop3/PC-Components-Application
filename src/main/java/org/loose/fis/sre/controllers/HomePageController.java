@@ -22,6 +22,10 @@ public class HomePageController {
         username = userName;
     }
 
+    public static String getUsername() {
+        return username;
+    }
+
     @FXML
     private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
 
