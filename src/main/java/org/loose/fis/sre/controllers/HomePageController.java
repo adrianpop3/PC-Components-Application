@@ -22,36 +22,45 @@ public class HomePageController {
         username = userName;
     }
 
+    public static String getUsernameHome() { return username; }
+
+
     @FXML
     private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
 
     @FXML
     private Stage stage;
     private Parent root;
+    private static int nr;
+
+    public static int GetNr()
+    {
+        return nr;
+    }
 
     public void handleLinkToCategoriesAction(ActionEvent actionEvent) throws Exception {
 
         if (actionEvent.getSource() == processors) {
             stage = (Stage) processors.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/processors_page.fxml")); //processors_page.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/processors_page.fxml"));
             stage.setTitle("PCA - PROCESSOR");
         }
 
         if (actionEvent.getSource() == graphic) {
             stage = (Stage) graphic.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic_page.fxml")); //graphic.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic_page.fxml"));
             stage.setTitle("PCA - GRAPHIC CARD");
         }
 
         if (actionEvent.getSource() == ram) {
             stage = (Stage) ram.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram_page.fxml")); //ram.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram_page.fxml"));
             stage.setTitle("PCA - RAM");
         }
 
         if (actionEvent.getSource() == ssdhdd) {
             stage = (Stage) ssdhdd.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd_page.fxml")); //ssdhdd.fxml - to be done
+            root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd_page.fxml"));
             stage.setTitle("PCA - SSD & HDD");
         }
 
@@ -80,8 +89,17 @@ public class HomePageController {
         //to be done
     }
 
-    public void handleEditProductAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleEditProductAction (ActionEvent actionEvent) throws Exception{
+        if(actionEvent.getSource() == edit){
+            nr=1;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditProduct.fxml"));
+        }
+
+        stage.setTitle("Edit the products");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handlePlaceOrderAction(ActionEvent actionEvent) {

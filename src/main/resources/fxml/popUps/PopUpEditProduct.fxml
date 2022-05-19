@@ -17,7 +17,7 @@
         <Pane fx:id="panelRAM1" prefHeight="398.0" prefWidth="726.0" />
         <Pane fx:id="panelSSD_HDD1" prefHeight="398.0" prefWidth="726.0" />
     </AnchorPane>
-    <Text fill="#8a6a57" layoutX="217.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the products cateogory">
+    <Text fill="#8a6a57" layoutX="217.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the product categories">
         <font>
             <Font size="19.0" />
         </font>
@@ -27,6 +27,6 @@
             <Font size="14.0" />
         </font>
     </Text>
-    <Button fx:id="ClosePopUp1" layoutX="599.0" layoutY="104.0" mnemonicParsing="false" onAction="#CloseEditPopUp" prefHeight="26.0" prefWidth="117.0" stylesheets="@../css/general_button.css" text="Close window" />
+    <Button fx:id="ClosePopUp1" layoutX="599.0" layoutY="104.0" mnemonicParsing="false" onAction="#CloseEditPopUp" prefHeight="26.0" prefWidth="117.0" stylesheets="@../../css/general_button.css" text="Close window" />
 
 </AnchorPane>
