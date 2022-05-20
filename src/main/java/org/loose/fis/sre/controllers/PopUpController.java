@@ -179,6 +179,10 @@ public class PopUpController {
         }
 
     }
+
+    public void addProduct(ActionEvent actionEvent) {
+        //to be done
+    }
 }
 
 

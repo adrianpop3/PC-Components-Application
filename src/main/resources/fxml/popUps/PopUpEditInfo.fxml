@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #154a44;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.PopUpEditInfoController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #154a44;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.PopUpEditInfoController">
 
     <Text fill="#8a6a57" layoutX="146.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Information related to the product">
         <font>
             <Font size="19.0" />
         </font>
     </Text>
-    <Button id="confirm" fx:id="Confirm" layoutX="265.0" layoutY="310.0" mnemonicParsing="false" onAction="#CloseEditInfoPopUp" prefHeight="27.0" prefWidth="70.0" stylesheets="@../../css/general_button.css" text="Confirm" />
+    <Button id="confirm" fx:id="Confirm" layoutX="235.0" layoutY="313.0" mnemonicParsing="false" onAction="#CloseEditInfoPopUp" prefHeight="27.0" prefWidth="148.0" stylesheets="@../../css/general_button.css" text="Modify product" />
     <TextArea fx:id="Name" editable="false" layoutX="226.0" layoutY="72.0" prefHeight="35.0" prefWidth="148.0" promptText="Name" />
     <TextField id="price" fx:id="Price" layoutX="131.0" layoutY="135.0" promptText="Price" />
-    <TextField id="type" fx:id="Specific" layoutX="131.0" layoutY="195.0" promptText="Type" />
+    <TextField id="type" fx:id="Specific" layoutX="131.0" layoutY="195.0" promptText="Specific Information" />
     <TextField id="descrption" fx:id="Description" layoutX="406.0" layoutY="170.0" prefHeight="74.0" prefWidth="167.0" promptText="Description" />
     <TextField id="garantie" fx:id="Guarantee" layoutX="131.0" layoutY="250.0" promptText="Guarantee" />
     <Text fill="#8a6a57" layoutX="61.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
