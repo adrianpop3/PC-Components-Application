@@ -26,6 +26,7 @@ public class Graphic {
 
     @FXML
     public AnchorPane anchorPaneRight;
+
     private static VBox vBox = new VBox();
     private static Pane[] pane = new Pane[10];
     private static List<Text> name = new ArrayList<>(10);
