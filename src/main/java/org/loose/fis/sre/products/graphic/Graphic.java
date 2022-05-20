@@ -3,6 +3,7 @@ package org.loose.fis.sre.products.graphic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,12 +33,21 @@ public class Graphic {
     private static List<Text> price = new ArrayList<>(10);
     private static List<Text> type = new ArrayList<>(10);
     private static List<Text> guaranty = new ArrayList<>(10);
-    private static List<Button> buttons = new ArrayList<>(10);
+    private static List<Button> button = new ArrayList<>(10);
 
     private Stage stage;
     private Parent root;
 
-    public static void displayProducts(String nume, String descriere, String pret, String tip, String garantie, String id) {
+    @FXML
+    public void initialize() {
+        vBox = new VBox();
+        vBox.setPadding(new Insets(10, 10, 10, 10));
+        vBox.setSpacing(50);
+
+        anchorPaneRight.getChildren().add(vBox);
+    }
+
+    public static void displayProduct(String nume, String descriere, String pret, String tip, String garantie, String id) {
         for (int i = 0; i < 10; i++) {
             // Name
             name.add(i, new Text(nume));
@@ -65,34 +75,37 @@ public class Graphic {
             guaranty.get(i).setLayoutY(3);
 
             // Add to cart button
-            buttons.add(i, new Button("Add to cart"));
-            buttons.get(i).setLayoutX(620);
-            buttons.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: white");
-            buttons.get(i).setId(id);
+            button.add(i, new Button("Add to cart"));
+            button.get(i).setLayoutX(620);
+            button.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: #ffffff");
+            button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
             if (checkUserRole(HomePageController.getUsername()).equals("Seller"))
-                buttons.get(i).setVisible(false);
+                button.get(i).setVisible(false);
             else
-                buttons.get(i).setVisible(true);
+                button.get(i).setVisible(true);
 
             pane[i] = new Pane();
             pane[i].setLayoutX(700);
             pane[i].setLayoutY(50);
-            pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), buttons.get(i), buttons.get(i));
+            pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
         }
 
+        // don't forget about the case when new products are added
+        // don't forget about the implementation of the button add to cart
     }
-
 
     public void BackToHomePage(ActionEvent actionEvent) throws Exception {
         if (actionEvent.getSource() == back) {
             stage = (Stage) back.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/home_page.fxml"));
+            stage.setTitle("PCA - HOME");
         }
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
 }

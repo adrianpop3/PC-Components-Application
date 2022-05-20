@@ -24,6 +24,7 @@ public class SSD_HDD {
         if (actionEvent.getSource() == back) {
             stage = (Stage) back.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/home_page.fxml"));
+            stage.setTitle("PCA - HOME");
         }
 
         Scene scene = new Scene(root);
