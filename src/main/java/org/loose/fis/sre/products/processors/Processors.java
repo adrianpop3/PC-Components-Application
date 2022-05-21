@@ -48,7 +48,7 @@ public class Processors {
         anchorPaneRight.getChildren().add(vBox);
     }
 
-    public static void displayProduct(String nume, String descriere, String pret, String tip, String garantie, String id) {
+    public static void displayProduct(String nume, String pret, String tip, String descriere, String garantie, String id) {
         for (int i = 0; i < 10; i++) {
             // Name
             name.add(i, new Text(nume));
@@ -90,9 +90,8 @@ public class Processors {
             pane[i] = new Pane();
             pane[i].setLayoutX(700);
             pane[i].setLayoutY(50);
-            pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
+            pane[i].getChildren().addAll(name.get(i), price.get(i), type.get(i), description.get(i), guaranty.get(i), button.get(i));
         }
-
         // don't forget about the case when new products are added
         // don't forget about the implementation of the button add to cart
     }
