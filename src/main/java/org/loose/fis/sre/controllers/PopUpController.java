@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
 import org.loose.fis.sre.services.GraphicService;
 import org.loose.fis.sre.services.ProcessorService;
+import org.loose.fis.sre.services.RAMService;
 import org.loose.fis.sre.services.UserService;
 
 import java.util.List;
@@ -49,9 +50,7 @@ public class PopUpController {
     private Button addit,CloseWindow,CloseWindow1,goback,confirmChange;
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
-    private static int nrP=0;
-    private static int nrG=0;
-
+    private static int nrP=0, nrG=0, nrR;
 
     private void initializeVbox(){
         vBox.setPadding(new Insets(10,10,10,10));
@@ -211,6 +210,10 @@ public class PopUpController {
                 if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
                     GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
                     nrG++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
+                    RAMService.addRAM(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrR++;
                 }
 
                 stage = (Stage) addit.getScene().getWindow();
