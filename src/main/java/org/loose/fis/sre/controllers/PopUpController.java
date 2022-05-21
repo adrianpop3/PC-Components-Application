@@ -16,10 +16,7 @@ import javafx.geometry.Insets;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
-import org.loose.fis.sre.services.GraphicService;
-import org.loose.fis.sre.services.ProcessorService;
-import org.loose.fis.sre.services.RAMService;
-import org.loose.fis.sre.services.UserService;
+import org.loose.fis.sre.services.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -50,7 +47,7 @@ public class PopUpController {
     private Button addit,CloseWindow,CloseWindow1,goback,confirmChange;
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
-    private static int nrP=0, nrG=0, nrR;
+    private static int nrP=0, nrG=0, nrR=0, nrM=0;
 
     private void initializeVbox(){
         vBox.setPadding(new Insets(10,10,10,10));
@@ -214,6 +211,10 @@ public class PopUpController {
                 if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
                     RAMService.addRAM(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
                     nrR++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().equals("SSD & HDD")) {
+                    SSD_HDDService.addSSDHDD(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrM++;
                 }
 
                 stage = (Stage) addit.getScene().getWindow();
