@@ -13,6 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
+import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.services.GraphicService;
+import org.loose.fis.sre.services.TemporaryOrderService;
+import org.loose.fis.sre.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +52,7 @@ public class Graphic {
         anchorPaneRight.getChildren().add(vBox);
     }
 
-    public static void displayProduct(String nume, String descriere, String pret, String tip, String garantie, String id) {
+    public static void displayProduct(String nume, String pret, String tip, String descriere, String garantie, String id) {
         for (int i = 0; i < 10; i++) {
             // Name
             name.add(i, new Text(nume));
@@ -61,12 +65,12 @@ public class Graphic {
             price.get(i).setLayoutY(3);
 
             // Description
-            description.add(i, new Text(descriere));
+            description.add(i, new Text(tip));
             description.get(i).setLayoutX(220);
             description.get(i).setLayoutY(3);
 
             // Type
-            type.add(i, new Text(tip));
+            type.add(i, new Text(descriere));
             type.get(i).setLayoutX(320);
             type.get(i).setLayoutY(3);
 
@@ -78,14 +82,11 @@ public class Graphic {
             // Add to cart button
             button.add(i, new Button("Add to cart"));
             button.get(i).setLayoutX(620);
-            button.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: #ffffff");
+            button.get(i).setStyle("-fx-background-color: #8a6a57; -fx-background-radius: 15px; -fx-text-fill: #A31010");
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
-            if (checkUserRole(HomePageController.getUsername()).equals("Seller"))
-                button.get(i).setVisible(false);
-            else
-                button.get(i).setVisible(true);
+            button.get(i).setVisible(!checkUserRole(HomePageController.getUsernameHome()).equals("Seller"));
 
             pane[i] = new Pane();
             pane[i].setLayoutX(700);
@@ -93,8 +94,23 @@ public class Graphic {
             pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
         }
 
-        // don't forget about the case when new products are added
-        // don't forget about the implementation of the button add to cart
+        for (int i = 0; i < button.size(); i++) {
+            System.out.println("test");
+            final int nr = i;
+            button.get(i).setOnAction(event -> {
+                for (int j = 0; j < name.size(); j++) {
+                    if (TemporaryOrderService.verifyProduct(name.get(nr).getText(),
+                            HomePageController.getUsernameHome())) {
+                        return;
+                    }
+                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(GraphicService.returnProductId(name.get(nr).getText())),
+                            HomePageController.getUsernameHome(), name.get(nr).getText(),
+                            UserService.returnId(HomePageController.getUsernameHome()));
+                    return;
+                }
+            });
+        }
+        vBox.getChildren().add(pane[PopUpController.getNrG()]);
     }
 
     public void BackToHomePage(ActionEvent actionEvent) throws Exception {
