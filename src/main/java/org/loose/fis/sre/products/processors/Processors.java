@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
+import org.loose.fis.sre.controllers.PopUpController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +62,12 @@ public class Processors {
             price.get(i).setLayoutY(3);
 
             // Description
-            description.add(i, new Text(descriere));
+            description.add(i, new Text(tip));
             description.get(i).setLayoutX(220);
             description.get(i).setLayoutY(3);
 
             // Type
-            type.add(i, new Text(tip));
+            type.add(i, new Text(descriere));
             type.get(i).setLayoutX(320);
             type.get(i).setLayoutY(3);
 
@@ -78,11 +79,11 @@ public class Processors {
             // Add to cart button
             button.add(i, new Button("Add to cart"));
             button.get(i).setLayoutX(620);
-            button.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: #ffffff");
+            button.get(i).setStyle("-fx-background-color: #8a6a57; -fx-background-radius: 15px; -fx-text-fill: #A31010");
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
-            if (checkUserRole(HomePageController.getUsername()).equals("Seller"))
+            if (checkUserRole(HomePageController.getUsernameHome()).equals("Seller"))
                 button.get(i).setVisible(false);
             else
                 button.get(i).setVisible(true);
@@ -92,6 +93,7 @@ public class Processors {
             pane[i].setLayoutY(50);
             pane[i].getChildren().addAll(name.get(i), price.get(i), type.get(i), description.get(i), guaranty.get(i), button.get(i));
         }
+        vBox.getChildren().add(pane[PopUpController.getNrP()]);
         // don't forget about the case when new products are added
         // don't forget about the implementation of the button add to cart
     }
