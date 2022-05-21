@@ -4,7 +4,7 @@ public class GraphicObj {
 
     private String numeProdus;
     private String pret;
-    private String model;
+    private String specific;
     private String descriere;
     private String garantie;
     private int id;
@@ -13,10 +13,10 @@ public class GraphicObj {
 
     public GraphicObj() {}
 
-    public GraphicObj (String numeProdus, String pret, String model, String descriere, String garantie, int id) {
+    public GraphicObj (String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         this.numeProdus = numeProdus;
         this.pret = pret;
-        this.model = model;
+        this.specific = specific;
         this.descriere = descriere;
         this.garantie = garantie;
         this.id = id;
@@ -32,8 +32,8 @@ public class GraphicObj {
         return pret;
     }
 
-    public String getModel() {
-        return model;
+    public String getSpecific() {
+        return specific;
     }
 
     public String getDescriere() {
@@ -54,8 +54,8 @@ public class GraphicObj {
         this.pret = pret;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setSpecific(String specific) {
+        this.specific = specific;
     }
 
     public void setDescriere(String descriere) {
@@ -68,7 +68,7 @@ public class GraphicObj {
 
     @Override
     public String toString() {
-        return numeProdus + " " + pret + " " + model + " " + descriere + " " + garantie;
+        return numeProdus + " " + pret + " " + specific + " " + descriere + " " + garantie;
     }
 
 }

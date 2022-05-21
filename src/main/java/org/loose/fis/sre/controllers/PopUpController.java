@@ -16,6 +16,7 @@ import javafx.geometry.Insets;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
+import org.loose.fis.sre.services.GraphicService;
 import org.loose.fis.sre.services.ProcessorService;
 import org.loose.fis.sre.services.UserService;
 
@@ -49,6 +50,7 @@ public class PopUpController {
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
     private static int nrP=0;
+    private static int nrG=0;
 
 
     private void initializeVbox(){
@@ -205,6 +207,10 @@ public class PopUpController {
                 if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
                     ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
                     nrP++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
+                    GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrG++;
                 }
 
                 stage = (Stage) addit.getScene().getWindow();

@@ -32,14 +32,14 @@ public class ProcessorService {
         return ProcessorsRepository.find().toList();
     }
 
-    /*public static void EditProduct(String numeProdus,String Pret,String Tip,String Garantie,String Descriere) {
+    /*public static void EditProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
         for(ProcessorsObj processorsBase : ProcessorsRepository.find())
         {
             if (numeProdus.equals(processorsBase.getNumeProdus())) {
-                processorsBase.setDescriere(Descriere);
                 processorsBase.setPret(Pret);
+                processorsBase.setSpecific(Specific);
+                processorsBase.setDescriere(Descriere);
                 processorsBase.setGarantie(Garantie);
-                processorsBase.setSpecific(Tip);
                 ProcessorsRepository.insert(processorsBase);
             }
         }
