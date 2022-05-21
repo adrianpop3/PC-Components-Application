@@ -50,8 +50,8 @@ public class TemporaryOrder {
         this.productName = productName;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity() {
+        quantity++;
     }
 
     public void setIdCustomer(int idCustomer) {
