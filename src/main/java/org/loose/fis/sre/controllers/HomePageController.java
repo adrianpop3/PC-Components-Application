@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 import static org.loose.fis.sre.services.UserService.checkUserRole;
 
 public class HomePageController {
@@ -22,7 +24,9 @@ public class HomePageController {
         username = userName;
     }
 
-    public static String getUsernameHome() { return username; }
+    public static String getUsernameHome() {
+        return username;
+    }
 
 
     @FXML
@@ -33,8 +37,7 @@ public class HomePageController {
     private Parent root;
     private static int nr;
 
-    public static int GetNr()
-    {
+    public static int GetNr() {
         return nr;
     }
 
@@ -81,17 +84,28 @@ public class HomePageController {
         stage.show();
     }
 
-    public void handleAddProductAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleAddProductAction(ActionEvent actionEvent) throws IOException {
+        if(actionEvent.getSource()==add)
+        {
+            nr=2;
+            stage=new Stage();
+            root=FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpAddProduct.fxml"));
+        }
+
+
+        stage.setTitle("Add a new product");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleDeleteProductAction(ActionEvent actionEvent) {
         //to be done
     }
 
-    public void handleEditProductAction (ActionEvent actionEvent) throws Exception{
-        if(actionEvent.getSource() == edit){
-            nr=1;
+    public void handleEditProductAction(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == edit) {
+            nr = 1;
             stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditProduct.fxml"));
         }
@@ -149,4 +163,5 @@ public class HomePageController {
         welcomeMessage.setText("Glad to have you back, " + username + "!");
         checkRoleForButtonVisibility();
     }
+
 }

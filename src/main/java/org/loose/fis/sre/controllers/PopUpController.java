@@ -5,15 +5,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;
+import org.loose.fis.sre.products.processors.ProcessorsObj;
 import org.loose.fis.sre.services.ProcessorService;
+import org.loose.fis.sre.services.UserService;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -36,6 +40,15 @@ public class PopUpController {
     private static Text[] Tip=new Text[10];
     private static Text[] Garantie=new Text[10];
     private static Pane[] panels = new Pane[10];
+
+    @FXML
+    private TextField numeProdus, pret, specific, descriere, garantie;
+    private Stage stage=new Stage();
+    @FXML
+    private Button addit,CloseWindow,CloseWindow1,goback,confirmChange;
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
+
+    private static int nrP=0;
 
 
     private void initializeVbox(){
@@ -180,10 +193,23 @@ public class PopUpController {
 
     }
 
-    public void addProduct(ActionEvent actionEvent) {
-        //to be done
+     public void addProduct(ActionEvent event)
+    {
+            if (numeProdus.getText().isEmpty() || pret.getText().isEmpty() || specific.getText().isEmpty() || descriere.getText().isEmpty() || garantie.getText().isEmpty()) {
+                alert.setTitle("Empty field found!");
+                alert.setHeaderText((String) null);
+                alert.setContentText("Please complete all the fields!");
+                alert.showAndWait();
+            }
+            else {
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
+                    ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrP++;
+                }
+
+                stage = (Stage) addit.getScene().getWindow();
+                stage.close();
+            }
     }
+
 }
-
-
-

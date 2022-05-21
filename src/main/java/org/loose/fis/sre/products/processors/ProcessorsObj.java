@@ -4,7 +4,7 @@ public class ProcessorsObj {
 
     private String numeProdus;
     private String pret;
-    private String arhitectura;
+    private String specific;
     private String descriere;
     private String garantie;
     private int id;
@@ -13,10 +13,10 @@ public class ProcessorsObj {
 
     public ProcessorsObj() {}
 
-    public ProcessorsObj (String numeProdus, String pret, String arhitectura, String descriere, String garantie, int id) {
+    public ProcessorsObj (String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         this.numeProdus = numeProdus;
         this.pret = pret;
-        this.arhitectura = arhitectura;
+        this.specific = specific;
         this.descriere = descriere;
         this.garantie = garantie;
         this.id = id;
@@ -32,8 +32,8 @@ public class ProcessorsObj {
         return pret;
     }
 
-    public String getArhitectura() {
-        return arhitectura;
+    public String getSpecific() {
+        return specific;
     }
 
     public String getDescriere() {
@@ -54,8 +54,8 @@ public class ProcessorsObj {
         this.pret = pret;
     }
 
-    public void setArhitectura (String arhitectura) {
-        this.arhitectura = arhitectura;
+    public void setSpecific (String specific) {
+        this.specific = specific;
     }
 
     public void setDescriere(String descriere) {
@@ -68,7 +68,7 @@ public class ProcessorsObj {
 
     @Override
     public String toString() {
-        return numeProdus + " " + pret + " " + arhitectura + " " + descriere + " " + garantie;
+        return numeProdus + " " + pret + " " + specific + " " + descriere + " " + garantie;
     }
 
 }
