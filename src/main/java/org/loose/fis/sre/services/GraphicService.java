@@ -4,6 +4,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.products.graphic.Graphic;
 import org.loose.fis.sre.products.graphic.GraphicObj;
 
 import java.util.List;
@@ -15,9 +16,9 @@ public class GraphicService {
 
     private static Nitrite database;
     private static ObjectRepository<GraphicObj> GraphicRepository;
-    private static int i=0;
+    private static int i = 0;
 
-    public static void initDataBaseGraphic(){
+    public static void initDataBaseGraphic() {
         FileSystemService.initDirectory();
         database = Nitrite.builder()
                 .filePath(getPathToFile("Graphic.db").toFile())
@@ -25,8 +26,11 @@ public class GraphicService {
         GraphicRepository = database.getRepository(GraphicObj.class);
     }
 
-    public static void closeDataBase(){
-        database.close();
+    public static void display() {
+        for (GraphicObj graphicObj : GraphicRepository.find()) {
+            i++;
+            Graphic.displayProduct(graphicObj.getNumeProdus(), graphicObj.getPret(), graphicObj.getSpecific(), graphicObj.getDescriere(), graphicObj.getGarantie(), "b" + i);
+        }
     }
 
     public static List<GraphicObj> getAllGraphicCards() {
@@ -46,25 +50,23 @@ public class GraphicService {
         }
     }*/
 
-    public static void setForDelete(){
-        for(GraphicObj graphicBase : GraphicRepository.find()){
-            if(UserService.returnId(HomePageController.getUsernameHome())== graphicBase.getId()){
+    public static void setForDelete() {
+        for (GraphicObj graphicBase : GraphicRepository.find()) {
+            if (UserService.returnId(HomePageController.getUsernameHome()) == graphicBase.getId()) {
                 i++;
-                PopUpController.getDataBase(graphicBase.getNumeProdus(), graphicBase.getPret(), graphicBase.getSpecific(), graphicBase.getDescriere(), graphicBase.getGarantie(),"b"+i);
+                PopUpController.getDataBase(graphicBase.getNumeProdus(), graphicBase.getPret(), graphicBase.getSpecific(), graphicBase.getDescriere(), graphicBase.getGarantie(), "b" + i);
             }
         }
     }
 
-    public static void addGraphic(String numeProdus, String pret,String specific, String descriere, String garantie,int id) {
+    public static void addGraphic(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         GraphicRepository.insert(new GraphicObj(numeProdus, pret, specific, descriere, garantie, id));
     }
 
-    public static int returnId(String numeProdus){
-        for(GraphicObj graphicBase: GraphicRepository.find())
-        {
-            if(Objects.equals(numeProdus,graphicBase.getNumeProdus()))
-            {
-                return graphicBase.getId();
+    public static int returnProductId(String productName) {
+        for (GraphicObj graphicObj : GraphicRepository.find()) {
+            if (Objects.equals(productName, graphicObj.getNumeProdus())) {
+                return graphicObj.getId();
             }
         }
         return -1;

@@ -222,4 +222,11 @@ public class PopUpController {
             }
     }
 
+    public static int getNrP() {
+        return nrP;
+    }
+
+    public static int getNrG() {
+        return nrG;
+    }
 }

@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.sre.services.GraphicService;
+import org.loose.fis.sre.services.ProcessorService;
 
 import java.io.IOException;
 
@@ -28,7 +30,6 @@ public class HomePageController {
         return username;
     }
 
-
     @FXML
     private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
 
@@ -46,12 +47,14 @@ public class HomePageController {
         if (actionEvent.getSource() == processors) {
             stage = (Stage) processors.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/processors_page.fxml"));
+            ProcessorService.display();
             stage.setTitle("PCA - PROCESSOR");
         }
 
         if (actionEvent.getSource() == graphic) {
             stage = (Stage) graphic.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/graphic_page.fxml"));
+            GraphicService.display();
             stage.setTitle("PCA - GRAPHIC CARD");
         }
 
@@ -85,11 +88,10 @@ public class HomePageController {
     }
 
     public void handleAddProductAction(ActionEvent actionEvent) throws IOException {
-        if(actionEvent.getSource()==add)
-        {
-            nr=2;
-            stage=new Stage();
-            root=FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpAddProduct.fxml"));
+        if (actionEvent.getSource() == add) {
+            nr = 2;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpAddProduct.fxml"));
         }
 
 
