@@ -48,7 +48,7 @@ public class SSD_HDD {
         anchorPaneRight.getChildren().add(vBox);
     }
 
-    public static void displayProduct(String nume, String descriere, String pret, String tip, String garantie, String id) {
+    public static void displayProduct(String nume, String pret, String tip, String descriere, String garantie, String id) {
         for (int i = 0; i < 10; i++) {
             // Name
             name.add(i, new Text(nume));
@@ -61,12 +61,12 @@ public class SSD_HDD {
             price.get(i).setLayoutY(3);
 
             // Description
-            description.add(i, new Text(descriere));
+            description.add(i, new Text(tip));
             description.get(i).setLayoutX(220);
             description.get(i).setLayoutY(3);
 
             // Type
-            type.add(i, new Text(tip));
+            type.add(i, new Text(descriere));
             type.get(i).setLayoutX(320);
             type.get(i).setLayoutY(3);
 
@@ -82,7 +82,7 @@ public class SSD_HDD {
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
-            if (checkUserRole(HomePageController.getUsername()).equals("Seller"))
+            if (checkUserRole(HomePageController.getUsernameHome()).equals("Seller"))
                 button.get(i).setVisible(false);
             else
                 button.get(i).setVisible(true);
