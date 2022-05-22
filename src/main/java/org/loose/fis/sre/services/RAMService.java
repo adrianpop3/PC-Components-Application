@@ -4,7 +4,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
-import org.loose.fis.sre.products.graphic.GraphicObj;
+import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.ram.RAMObj;
 
 import java.util.List;
@@ -24,6 +24,13 @@ public class RAMService {
                 .filePath(getPathToFile("RAM.db").toFile())
                 .openOrCreate("test", "test");
         RAMRepository = database.getRepository(RAMObj.class);
+    }
+
+    public static void display() {
+        for (RAMObj ramObj : RAMRepository.find()) {
+            i++;
+            Processors.displayProduct(ramObj.getNumeProdus(), ramObj.getPret(), ramObj.getSpecific(), ramObj.getDescriere(), ramObj.getGarantie(), "b" + i);
+        }
     }
 
     public static void closeDataBase() {

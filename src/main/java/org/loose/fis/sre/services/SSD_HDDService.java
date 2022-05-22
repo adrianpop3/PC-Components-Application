@@ -4,6 +4,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.ssdhdd.SSD_HDD_Obj;
 
 import java.util.List;
@@ -22,6 +23,13 @@ public class SSD_HDDService {
                 .filePath(getPathToFile("SSDHDD.db").toFile())
                 .openOrCreate("test", "test");
         SSDHDDRepository = database.getRepository(SSD_HDD_Obj.class);
+    }
+
+    public static void display() {
+        for (SSD_HDD_Obj ssd_hdd_obj : SSDHDDRepository.find()) {
+            i++;
+            Processors.displayProduct(ssd_hdd_obj.getNumeProdus(), ssd_hdd_obj.getPret(), ssd_hdd_obj.getSpecific(), ssd_hdd_obj.getDescriere(), ssd_hdd_obj.getGarantie(), "b" + i);
+        }
     }
 
     public static void closeDataBase() {
