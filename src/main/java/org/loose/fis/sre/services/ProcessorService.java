@@ -5,10 +5,12 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.products.graphic.GraphicObj;
 import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
@@ -42,8 +44,7 @@ public class ProcessorService {
     }
 
     public static void editProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
-        for(ProcessorsObj processorsBase : ProcessorsRepository.find())
-        {
+        for (ProcessorsObj processorsBase : ProcessorsRepository.find()) {
             if (numeProdus.equals(processorsBase.getNumeProdus())) {
                 processorsBase.setPret(Pret);
                 processorsBase.setSpecific(Specific);
@@ -68,13 +69,21 @@ public class ProcessorService {
         ProcessorsRepository.insert(new ProcessorsObj(numeProdus, pret, specific, descriere, garantie, id));
     }
 
-    public static void deleteProduct(String numeProdus){
-        for(ProcessorsObj processorsBase : ProcessorsRepository.find())
-        {
-            if(numeProdus.equals(processorsBase.getNumeProdus())){
-                ProcessorsRepository.remove(ObjectFilters.eq("numeProdus",numeProdus));
+    public static void deleteProduct(String numeProdus) {
+        for (ProcessorsObj processorsBase : ProcessorsRepository.find()) {
+            if (numeProdus.equals(processorsBase.getNumeProdus())) {
+                ProcessorsRepository.remove(ObjectFilters.eq("numeProdus", numeProdus));
             }
         }
+    }
+
+    public static int returnProductId(String productName) {
+        for (ProcessorsObj processorsObj : ProcessorsRepository.find()) {
+            if (Objects.equals(productName, processorsObj.getNumeProdus())) {
+                return processorsObj.getId();
+            }
+        }
+        return -1;
     }
 
 }
