@@ -6,6 +6,8 @@ import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.MyCartController;
 import org.loose.fis.sre.model.TemporaryOrder;
 
+import java.util.Random;
+
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class TemporaryOrderService {
@@ -59,4 +61,32 @@ public class TemporaryOrderService {
         }
     }
 
+    public static boolean verifyCustomer(String customerName) {
+        for (TemporaryOrder temporaryOrder : temporaryOrderObjectRepository.find()) {
+            if (customerName.equals(temporaryOrder.getCustomerName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void setNewOrder() {
+        Random random = new Random();
+        for (TemporaryOrder temporaryOrder : temporaryOrderObjectRepository.find()) {
+            int random_next_1 = random.nextInt(1000);
+            if (!UserService.verifyUserId(random_next_1)) {
+                random_next_1 = random.nextInt(1000);
+            }
+            OrderService.addOrder(temporaryOrder.getProductName(), temporaryOrder.getSellerName(),
+                    temporaryOrder.getCustomerName(), temporaryOrder.getQuantity(),
+                    "It is processing!", temporaryOrder.getIdCustomer(), random_next_1);
+        }
+    }
+
+    public static void removeFromDatabase(String customerName) {
+        for (TemporaryOrder temporaryOrder : temporaryOrderObjectRepository.find()) {
+            temporaryOrderObjectRepository.remove(ObjectFilters.eq("customerName", customerName));
+
+        }
+    }
 }

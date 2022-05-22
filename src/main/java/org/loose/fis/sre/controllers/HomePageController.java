@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.GraphicService;
 import org.loose.fis.sre.services.ProcessorService;
+import org.loose.fis.sre.services.TemporaryOrderService;
 
 import java.io.IOException;
 
@@ -123,7 +124,8 @@ public class HomePageController {
             nr = 6;
             stage = new Stage();
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpMyCart.fxml"));
-            // test for customer !!!
+            if (TemporaryOrderService.verifyCustomer(HomePageController.getUsernameHome()))
+                TemporaryOrderService.display(HomePageController.getUsernameHome());
         }
 
         stage.setTitle("PCA - MY CART");
