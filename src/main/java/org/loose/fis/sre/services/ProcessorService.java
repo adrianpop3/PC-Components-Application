@@ -5,7 +5,6 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
-import org.loose.fis.sre.products.graphic.GraphicObj;
 import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
 
