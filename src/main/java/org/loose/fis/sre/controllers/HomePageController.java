@@ -31,7 +31,7 @@ public class HomePageController {
     }
 
     @FXML
-    private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
+    private Button processors, graphic, ram, ssdhdd, add, delete, edit, myCart, approve, status, sellerHistory, customerHistory, logout;
 
     @FXML
     private Stage stage;
@@ -95,7 +95,7 @@ public class HomePageController {
         }
 
 
-        stage.setTitle("Add a new product");
+        stage.setTitle("PCA - ADD PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -112,14 +112,24 @@ public class HomePageController {
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditProduct.fxml"));
         }
 
-        stage.setTitle("Edit the products");
+        stage.setTitle("PCA - EDIT PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void handlePlaceOrderAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleMyCartAction(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == myCart) {
+            nr = 6;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpMyCart.fxml"));
+            // test for customer !!!
+        }
+
+        stage.setTitle("PCA - MY CART");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleApproveOrderAction(ActionEvent actionEvent) {
@@ -143,7 +153,7 @@ public class HomePageController {
             add.setVisible(false);
             edit.setVisible(false);
             delete.setVisible(false);
-            placeOrder.setVisible(true);
+            myCart.setVisible(true);
             approve.setVisible(false);
             status.setVisible(true);
             sellerHistory.setVisible(false);
@@ -152,7 +162,7 @@ public class HomePageController {
             add.setVisible(true);
             edit.setVisible(true);
             delete.setVisible(true);
-            placeOrder.setVisible(false);
+            myCart.setVisible(false);
             approve.setVisible(true);
             status.setVisible(false);
             sellerHistory.setVisible(true);
