@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
 import org.loose.fis.sre.services.GraphicService;
+import org.loose.fis.sre.services.ProcessorService;
 import org.loose.fis.sre.services.TemporaryOrderService;
 import org.loose.fis.sre.services.UserService;
 
@@ -102,7 +103,7 @@ public class Processors {
                             HomePageController.getUsernameHome())) {
                         return;
                     }
-                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(GraphicService.returnProductId(name.get(nr).getText())),
+                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(ProcessorService.returnProductId(name.get(nr).getText())),
                             HomePageController.getUsernameHome(), name.get(nr).getText(),
                             UserService.returnId(HomePageController.getUsernameHome()));
                     return;

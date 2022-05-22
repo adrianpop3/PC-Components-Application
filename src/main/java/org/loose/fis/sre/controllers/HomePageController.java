@@ -8,8 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.loose.fis.sre.services.GraphicService;
-import org.loose.fis.sre.services.ProcessorService;
+import org.loose.fis.sre.services.*;
 
 import java.io.IOException;
 
@@ -31,7 +30,7 @@ public class HomePageController {
     }
 
     @FXML
-    private Button processors, graphic, ram, ssdhdd, add, delete, edit, placeOrder, approve, status, sellerHistory, customerHistory, logout;
+    private Button processors, graphic, ram, ssdhdd, add, delete, edit, myCart, approve, status, sellerHistory, customerHistory, logout;
 
     @FXML
     private Stage stage;
@@ -61,12 +60,14 @@ public class HomePageController {
         if (actionEvent.getSource() == ram) {
             stage = (Stage) ram.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/ram_page.fxml"));
+            RAMService.display();
             stage.setTitle("PCA - RAM");
         }
 
         if (actionEvent.getSource() == ssdhdd) {
             stage = (Stage) ssdhdd.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/pages/ssdhdd_page.fxml"));
+            SSD_HDDService.display();
             stage.setTitle("PCA - SSD & HDD");
         }
 
@@ -95,14 +96,23 @@ public class HomePageController {
         }
 
 
-        stage.setTitle("Add a new product");
+        stage.setTitle("PCA - ADD PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void handleDeleteProductAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleDeleteProductAction(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == delete) {
+            nr = 3;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpDeleteProduct.fxml"));
+        }
+
+        stage.setTitle("PCA - DELETE PRODUCT");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleEditProductAction(ActionEvent actionEvent) throws Exception {
@@ -112,14 +122,25 @@ public class HomePageController {
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditProduct.fxml"));
         }
 
-        stage.setTitle("Edit the products");
+        stage.setTitle("PCA - EDIT PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void handlePlaceOrderAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleMyCartAction(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource() == myCart) {
+            nr = 6;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpMyCart.fxml"));
+            if (TemporaryOrderService.verifyCustomer(HomePageController.getUsernameHome()))
+                TemporaryOrderService.display(HomePageController.getUsernameHome());
+        }
+
+        stage.setTitle("PCA - MY CART");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleApproveOrderAction(ActionEvent actionEvent) {
@@ -143,7 +164,7 @@ public class HomePageController {
             add.setVisible(false);
             edit.setVisible(false);
             delete.setVisible(false);
-            placeOrder.setVisible(true);
+            myCart.setVisible(true);
             approve.setVisible(false);
             status.setVisible(true);
             sellerHistory.setVisible(false);
@@ -152,7 +173,7 @@ public class HomePageController {
             add.setVisible(true);
             edit.setVisible(true);
             delete.setVisible(true);
-            placeOrder.setVisible(false);
+            myCart.setVisible(false);
             approve.setVisible(true);
             status.setVisible(false);
             sellerHistory.setVisible(true);

@@ -13,6 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
+import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.services.RAMService;
+import org.loose.fis.sre.services.SSD_HDDService;
+import org.loose.fis.sre.services.TemporaryOrderService;
+import org.loose.fis.sre.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +98,23 @@ public class SSD_HDD {
             pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
         }
 
-        // don't forget about the case when new products are added
-        // don't forget about the implementation of the button add to cart
+        for (int i = 0; i < button.size(); i++) {
+            final int nr = i;
+            button.get(i).setOnAction(event -> {
+                for (int j = 0; j < name.size(); j++) {
+                    if (TemporaryOrderService.verifyProduct(name.get(nr).getText(),
+                            HomePageController.getUsernameHome())) {
+                        return;
+                    }
+                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(SSD_HDDService.returnProductId(name.get(nr).getText())),
+                            HomePageController.getUsernameHome(), name.get(nr).getText(),
+                            UserService.returnId(HomePageController.getUsernameHome()));
+                    return;
+                }
+            });
+        }
+
+        vBox.getChildren().add(pane[PopUpController.getNrM()]);
     }
 
     public void BackToHomePage(ActionEvent actionEvent) throws Exception {

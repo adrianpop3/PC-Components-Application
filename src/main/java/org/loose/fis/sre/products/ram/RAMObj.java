@@ -4,7 +4,7 @@ public class RAMObj {
 
     private String numeProdus;
     private String pret;
-    private String capacitate;
+    private String specific;
     private String descriere;
     private String garantie;
     private int id;
@@ -13,10 +13,10 @@ public class RAMObj {
 
     public RAMObj() {}
 
-    public RAMObj (String numeProdus, String pret, String capacitate, String descriere, String garantie, int id) {
+    public RAMObj (String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         this.numeProdus = numeProdus;
         this.pret = pret;
-        this.capacitate = capacitate;
+        this.specific = specific;
         this.descriere = descriere;
         this.garantie = garantie;
         this.id = id;
@@ -32,8 +32,8 @@ public class RAMObj {
         return pret;
     }
 
-    public String getCapacitate() {
-        return capacitate;
+    public String getSpecific() {
+        return specific;
     }
 
     public String getDescriere() {
@@ -54,8 +54,8 @@ public class RAMObj {
         this.pret = pret;
     }
 
-    public void setCapacitate(String capacitate) {
-        this.capacitate = capacitate;
+    public void setSpecific(String specific) {
+        this.specific = specific;
     }
 
     public void setDescriere(String descriere) {
@@ -68,7 +68,7 @@ public class RAMObj {
 
     @Override
     public String toString() {
-        return numeProdus + " " + pret + " " + capacitate + " " + descriere + " " + garantie;
+        return numeProdus + " " + pret + " " + specific + " " + descriere + " " + garantie;
     }
 
 }

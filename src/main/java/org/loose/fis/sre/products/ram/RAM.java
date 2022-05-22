@@ -13,6 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
+import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.services.GraphicService;
+import org.loose.fis.sre.services.RAMService;
+import org.loose.fis.sre.services.TemporaryOrderService;
+import org.loose.fis.sre.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,14 +83,11 @@ public class RAM {
             // Add to cart button
             button.add(i, new Button("Add to cart"));
             button.get(i).setLayoutX(620);
-            button.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: #ffffff");
+            button.get(i).setStyle("-fx-background-color: #8a6a57; -fx-background-radius: 15px; -fx-text-fill: #A31010");
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
-            if (checkUserRole(HomePageController.getUsernameHome()).equals("Seller"))
-                button.get(i).setVisible(false);
-            else
-                button.get(i).setVisible(true);
+            button.get(i).setVisible(!checkUserRole(HomePageController.getUsernameHome()).equals("Seller"));
 
             pane[i] = new Pane();
             pane[i].setLayoutX(700);
@@ -93,8 +95,23 @@ public class RAM {
             pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
         }
 
-        // don't forget about the case when new products are added
-        // don't forget about the implementation of the button add to cart
+        for (int i = 0; i < button.size(); i++) {
+            final int nr = i;
+            button.get(i).setOnAction(event -> {
+                for (int j = 0; j < name.size(); j++) {
+                    if (TemporaryOrderService.verifyProduct(name.get(nr).getText(),
+                            HomePageController.getUsernameHome())) {
+                        return;
+                    }
+                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(RAMService.returnProductId(name.get(nr).getText())),
+                            HomePageController.getUsernameHome(), name.get(nr).getText(),
+                            UserService.returnId(HomePageController.getUsernameHome()));
+                    return;
+                }
+            });
+        }
+
+        vBox.getChildren().add(pane[PopUpController.getNrR()]);
     }
 
     public void BackToHomePage(ActionEvent actionEvent) throws Exception {
