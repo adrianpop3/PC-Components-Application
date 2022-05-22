@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+import org.loose.fis.sre.controllers.OrderStatusController;
 import org.loose.fis.sre.model.Order;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -27,6 +28,16 @@ public class OrderService {
 
     public static void addOrder(String sellerName, String customerName, String productName, int quantity, String status, int customerId, int orderId) {
         orderObjectRepository.insert(new Order(sellerName, customerName, productName, quantity, status, customerId, orderId));
+    }
+
+    public static void displayOrderStatus(String customerName) {
+        for (Order order : orderObjectRepository.find()) {
+            if (order.getCustomerName().equals(customerName)) {
+                int orderQuantity = order.getQuantity();
+                OrderStatusController.displayStatus(order.getProductName(), Integer.toString(orderQuantity), order.getStatus());
+
+            }
+        }
     }
 
 
