@@ -2,9 +2,11 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
 import org.loose.fis.sre.products.processors.Processors;
+import org.loose.fis.sre.products.ssdhdd.SSD_HDD;
 import org.loose.fis.sre.products.ssdhdd.SSD_HDD_Obj;
 
 import java.util.List;
@@ -28,7 +30,7 @@ public class SSD_HDDService {
     public static void display() {
         for (SSD_HDD_Obj ssd_hdd_obj : SSDHDDRepository.find()) {
             i++;
-            Processors.displayProduct(ssd_hdd_obj.getNumeProdus(), ssd_hdd_obj.getPret(), ssd_hdd_obj.getSpecific(), ssd_hdd_obj.getDescriere(), ssd_hdd_obj.getGarantie(), "b" + i);
+            SSD_HDD.displayProduct(ssd_hdd_obj.getNumeProdus(), ssd_hdd_obj.getPret(), ssd_hdd_obj.getSpecific(), ssd_hdd_obj.getDescriere(), ssd_hdd_obj.getGarantie(), "b" + i);
         }
     }
 
@@ -40,30 +42,40 @@ public class SSD_HDDService {
         return SSDHDDRepository.find().toList();
     }
 
-    /*public static void EditProduct(String numeProdus,String Pret,String Specific,String Garantie,String Descriere) {
-        for(SSD_HDD_Obj sourcesBase : SSDHDDRepository.find())
+    public static void editProduct(String numeProdus,String Pret,String Specific,String Garantie,String Descriere) {
+        for(SSD_HDD_Obj ssdhddObj : SSDHDDRepository.find())
         {
-            if (numeProdus.equals(sourcesBase.getNumeProdus())) {
-                sourcesBase.setDescriere(Descriere);
-                sourcesBase.setPret(Pret);
-                sourcesBase.setGarantie(Garantie);
-                sourcesBase.setSpecific(Specific);
-                SSDHDDRepository.insert(sourcesBase);
+            if (numeProdus.equals(ssdhddObj.getNumeProdus())) {
+                ssdhddObj.setDescriere(Descriere);
+                ssdhddObj.setPret(Pret);
+                ssdhddObj.setGarantie(Garantie);
+                ssdhddObj.setSpecific(Specific);
+                deleteProduct(numeProdus);
+                SSDHDDRepository.insert(ssdhddObj);
             }
         }
-    }*/
+    }
 
     public static void setForDelete() {
-        for (SSD_HDD_Obj sourcesBase : SSDHDDRepository.find()) {
-            if (UserService.returnId(HomePageController.getUsernameHome()) == sourcesBase.getId()) {
+        for (SSD_HDD_Obj ssdhddbase : SSDHDDRepository.find()) {
+            if (UserService.returnId(HomePageController.getUsernameHome()) == ssdhddbase.getId()) {
                 i++;
-                PopUpController.getDataBase(sourcesBase.getNumeProdus(), sourcesBase.getPret(), sourcesBase.getDescriere(), sourcesBase.getSpecific(), sourcesBase.getGarantie(), "b" + i);
+                PopUpController.getDataBase(ssdhddbase.getNumeProdus(), ssdhddbase.getPret(), ssdhddbase.getDescriere(), ssdhddbase.getSpecific(), ssdhddbase.getGarantie(), "b" + i);
             }
         }
     }
 
     public static void addSSDHDD(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         SSDHDDRepository.insert(new SSD_HDD_Obj(numeProdus, specific, pret, descriere, garantie, id));
+    }
+
+    public static void deleteProduct(String numeProdus){
+        for(SSD_HDD_Obj ssdhddObj : SSDHDDRepository.find())
+        {
+            if(numeProdus.equals(ssdhddObj.getNumeProdus())){
+                SSDHDDRepository.remove(ObjectFilters.eq("numeProdus",numeProdus));
+            }
+        }
     }
 
     public static int returnProductId(String productName) {

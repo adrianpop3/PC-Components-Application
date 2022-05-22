@@ -44,14 +44,14 @@ public class ProcessorService {
     }
 
     public static void editProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
-        for (ProcessorsObj processorsBase : ProcessorsRepository.find()) {
-            if (numeProdus.equals(processorsBase.getNumeProdus())) {
-                processorsBase.setPret(Pret);
-                processorsBase.setSpecific(Specific);
-                processorsBase.setDescriere(Descriere);
-                processorsBase.setGarantie(Garantie);
+        for (ProcessorsObj processorsObj : ProcessorsRepository.find()) {
+            if (numeProdus.equals(processorsObj.getNumeProdus())) {
+                processorsObj.setPret(Pret);
+                processorsObj.setSpecific(Specific);
+                processorsObj.setDescriere(Descriere);
+                processorsObj.setGarantie(Garantie);
                 deleteProduct(numeProdus);
-                ProcessorsRepository.insert(processorsBase);
+                ProcessorsRepository.insert(processorsObj);
             }
         }
     }

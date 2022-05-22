@@ -2,9 +2,11 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
 import org.loose.fis.sre.products.processors.Processors;
+import org.loose.fis.sre.products.ram.RAM;
 import org.loose.fis.sre.products.ram.RAMObj;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class RAMService {
     public static void display() {
         for (RAMObj ramObj : RAMRepository.find()) {
             i++;
-            Processors.displayProduct(ramObj.getNumeProdus(), ramObj.getPret(), ramObj.getSpecific(), ramObj.getDescriere(), ramObj.getGarantie(), "b" + i);
+            RAM.displayProduct(ramObj.getNumeProdus(), ramObj.getPret(), ramObj.getSpecific(), ramObj.getDescriere(), ramObj.getGarantie(), "b" + i);
         }
     }
 
@@ -41,18 +43,19 @@ public class RAMService {
         return RAMRepository.find().toList();
     }
 
-    /*public static void EditProduct(String numeProdus,String Pret,String Specific,String Garantie,String Descriere) {
-        for(RAMObj ramBase : RAMRepository.find())
+    public static void editProduct(String numeProdus,String Pret,String Specific,String Garantie,String Descriere) {
+        for(RAMObj ramObj : RAMRepository.find())
         {
-            if (numeProdus.equals(ramBase.getNumeProdus())) {
-                ramBase.setDescriere(Descriere);
-                ramBase.setPret(Pret);
-                ramBase.setGarantie(Garantie);
-                ramBase.setSpecific(Specific);;
-                RAMRepository.insert(ramBase);
+            if (numeProdus.equals(ramObj.getNumeProdus())) {
+                ramObj.setDescriere(Descriere);
+                ramObj.setPret(Pret);
+                ramObj.setGarantie(Garantie);
+                ramObj.setSpecific(Specific);;
+                deleteProduct(numeProdus);
+                RAMRepository.insert(ramObj);
             }
         }
-    }*/
+    }
 
     public static void setForDelete() {
         for (RAMObj ramBase : RAMRepository.find()) {
@@ -65,6 +68,14 @@ public class RAMService {
 
     public static void addRAM(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         RAMRepository.insert(new RAMObj(numeProdus, pret, specific, descriere, garantie, id));
+    }
+
+    public static void deleteProduct(String numeProdus){
+        for(RAMObj ramBase : RAMRepository.find()){
+            if(numeProdus.equals(ramBase.getNumeProdus())){
+                RAMRepository.remove(ObjectFilters.eq("numeProdus",numeProdus));
+            }
+        }
     }
 
     public static int returnProductId(String productName) {
