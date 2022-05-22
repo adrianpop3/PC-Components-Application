@@ -109,7 +109,7 @@ public class HomePageController {
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpDeleteProduct.fxml"));
         }
 
-        stage.setTitle("Delete a product");
+        stage.setTitle("PCA - DELETE PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

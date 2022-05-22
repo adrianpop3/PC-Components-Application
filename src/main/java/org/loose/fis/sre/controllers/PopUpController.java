@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;
-import org.loose.fis.sre.products.processors.ProcessorsObj;
 import org.loose.fis.sre.services.*;
 
 import java.util.List;
@@ -361,5 +360,9 @@ public class PopUpController {
 
     public static String returnNume() {
         return nume;
+    }
+
+    public static int getMaxNrProducts() {
+        return Math.max(Math.max(nrG, nrP), Math.max(nrM, nrR));
     }
 }
