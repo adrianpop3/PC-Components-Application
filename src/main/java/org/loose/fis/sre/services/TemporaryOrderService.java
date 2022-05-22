@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+import org.loose.fis.sre.controllers.MyCartController;
 import org.loose.fis.sre.model.TemporaryOrder;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -47,6 +48,15 @@ public class TemporaryOrderService {
 
     public static void addTemporaryProduct(String sellerName, String customerName, String productName, int customerId) {
         temporaryOrderObjectRepository.insert(new TemporaryOrder(sellerName, customerName, productName, customerId));
+    }
+
+    public static void display(String customerName) {
+        for (TemporaryOrder temporaryOrder : temporaryOrderObjectRepository.find()) {
+            if (temporaryOrder.getCustomerName().equals(customerName)) {
+                int quantity = temporaryOrder.getQuantity();
+                MyCartController.displayProducts(temporaryOrder.getProductName(), Integer.toString(quantity));
+            }
+        }
     }
 
 }
