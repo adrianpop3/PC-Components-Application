@@ -87,5 +87,24 @@ public class UserService {
         return null;
     }
 
+    public static int returnId(String name) {
+
+        for (User user : userRepository.find()) {
+            if (name.equals(user.getUsername())) {
+                return user.getUserId();
+            }
+        }
+        return -1;
+    }
+
+    public static String returnName(int id) {
+        for (User user : userRepository.find()) {
+            if (id == user.getUserId() && user.getRole().equals("Seller")) {
+                return user.getUsername();
+            }
+        }
+        return null;
+    }
+
 
 }
