@@ -26,6 +26,7 @@ public class TemporaryOrderService {
         for (TemporaryOrder temporaryOrder : temporaryOrderObjectRepository.find()) {
             if (temporaryOrder.getProductName().equals(productName)) {
                 name = productName;
+                break;
             }
         }
         temporaryOrderObjectRepository.remove(ObjectFilters.eq("productName", name));

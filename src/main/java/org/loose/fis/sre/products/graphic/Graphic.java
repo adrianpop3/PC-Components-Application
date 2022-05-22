@@ -93,9 +93,7 @@ public class Graphic {
             pane[i].setLayoutY(50);
             pane[i].getChildren().addAll(name.get(i), price.get(i), description.get(i), type.get(i), guaranty.get(i), button.get(i));
         }
-
         for (int i = 0; i < button.size(); i++) {
-            System.out.println("test");
             final int nr = i;
             button.get(i).setOnAction(event -> {
                 for (int j = 0; j < name.size(); j++) {

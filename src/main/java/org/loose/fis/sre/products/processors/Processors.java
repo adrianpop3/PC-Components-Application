@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.services.GraphicService;
+import org.loose.fis.sre.services.TemporaryOrderService;
+import org.loose.fis.sre.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,19 +86,31 @@ public class Processors {
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller
-            if (checkUserRole(HomePageController.getUsernameHome()).equals("Seller"))
-                button.get(i).setVisible(false);
-            else
-                button.get(i).setVisible(true);
+            button.get(i).setVisible(!checkUserRole(HomePageController.getUsernameHome()).equals("Seller"));
 
             pane[i] = new Pane();
             pane[i].setLayoutX(700);
             pane[i].setLayoutY(50);
             pane[i].getChildren().addAll(name.get(i), price.get(i), type.get(i), description.get(i), guaranty.get(i), button.get(i));
         }
+
+        for (int i = 0; i < button.size(); i++) {
+            final int nr = i;
+            button.get(i).setOnAction(event -> {
+                for (int j = 0; j < name.size(); j++) {
+                    if (TemporaryOrderService.verifyProduct(name.get(nr).getText(),
+                            HomePageController.getUsernameHome())) {
+                        return;
+                    }
+                    TemporaryOrderService.addTemporaryProduct(UserService.returnName(GraphicService.returnProductId(name.get(nr).getText())),
+                            HomePageController.getUsernameHome(), name.get(nr).getText(),
+                            UserService.returnId(HomePageController.getUsernameHome()));
+                    return;
+                }
+            });
+        }
+
         vBox.getChildren().add(pane[PopUpController.getNrP()]);
-        // don't forget about the case when new products are added
-        // don't forget about the implementation of the button add to cart
     }
 
     public void BackToHomePage(ActionEvent actionEvent) throws Exception {
