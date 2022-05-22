@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.OrderStatusController;
 import org.loose.fis.sre.model.Order;
 
@@ -40,5 +41,14 @@ public class OrderService {
         }
     }
 
+    public static void replaceData() {
+        for (Order order : orderObjectRepository.find()) {
+            if (order.getCustomerName().equals(HomePageController.getUsernameHome())) {
+                if (order.getStatus().equals("Accepted") || order.getStatus().equals("Declined")) {
+                    FinalStatusService.addFinalOrder(order.getSellerName(), order.getCustomerName(), order.getProductName(), order.getQuantity(), order.getStatus());
+                }
+            }
+        }
+    }
 
 }

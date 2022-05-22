@@ -35,6 +35,8 @@ public class OrderStatusController {
         vBox.setSpacing(50);
 
         anchorPane.getChildren().add(vBox);
+
+        OrderService.replaceData();
     }
 
     public static void displayStatus(String numeProdus, String cantitate, String status_order) {
@@ -61,7 +63,7 @@ public class OrderStatusController {
             pane[i].getChildren().addAll(productName.get(i), quantity.get(i), status.get(i));
 
         }
-        vBox.getChildren().add(pane[10]);
+        vBox.getChildren().add(pane[9]);
     }
 
     public void handleCloseAction(ActionEvent actionEvent) {
