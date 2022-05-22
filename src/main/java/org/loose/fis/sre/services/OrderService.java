@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.model.Order;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -17,6 +18,11 @@ public class OrderService {
                 .filePath(getPathToFile("Order.db").toFile())
                 .openOrCreate("test", "test");
         orderObjectRepository = database.getRepository(Order.class);
+    }
+
+    public static void deleteOrder() {
+        orderObjectRepository.remove(ObjectFilters.eq("status", "Accepted"));
+        orderObjectRepository.remove(ObjectFilters.eq("status", "Declined"));
     }
 
     public static void addOrder(String sellerName, String customerName, String productName, int quantity, String status, int customerId, int orderId) {
