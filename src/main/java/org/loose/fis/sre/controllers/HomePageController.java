@@ -163,8 +163,17 @@ public class HomePageController {
         //to be done
     }
 
-    public void handleOnCustomerHistoryAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleOnCustomerHistoryAction(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == customerHistory) {
+            nr = 8;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpOrderHistoryCustomer.fxml"));
+            FinalStatusService.displayCustomerOrderHistory(HomePageController.getUsernameHome());
+        }
+        stage.setTitle("PCA - ORDER HISTORY");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void checkRoleForButtonVisibility() {
