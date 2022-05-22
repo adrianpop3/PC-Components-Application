@@ -6,20 +6,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.loose.fis.sre.controllers.OrderHistoryCustomerController"
-            prefHeight="621.0" prefWidth="648.0" style="-fx-background-color: #154a44">
+<AnchorPane prefHeight="621.0" prefWidth="648.0" style="-fx-background-color: #154a44" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.OrderHistoryCustomerController">
 
-    <Text layoutX="237.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order History" style="-fx-fill: #8a6a57">
+    <Text layoutX="238.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #8a6a57" text="Order History">
         <font>
-            <Font size="20.0"/>
+            <Font size="30.0" />
         </font>
     </Text>
-    <Separator layoutY="49.0" prefHeight="10.0" prefWidth="648.0"/>
-    <AnchorPane fx:id="anchorPane" layoutX="6.0" layoutY="59.0" prefHeight="512.0" prefWidth="635.0"/>
-    <Button id="closeButton" fx:id="closeButton" layoutX="298.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleCloseAction"
-            stylesheets="@../../css/special_button.css" text="Close"/>
+    <Separator layoutY="54.0" prefHeight="10.0" prefWidth="648.0" />
+    <AnchorPane fx:id="anchorPane" layoutX="6.0" layoutY="59.0" prefHeight="512.0" prefWidth="635.0" />
+    <Button id="closeButton" fx:id="closeButton" layoutX="276.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleCloseAction" prefHeight="35.0" prefWidth="96.0" stylesheets="@../../css/special_button.css" text="Close" />
 
 
 </AnchorPane>
