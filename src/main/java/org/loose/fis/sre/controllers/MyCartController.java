@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -64,13 +63,17 @@ public class MyCartController {
         if (actionEvent.getSource() == placeOrder) {
             TemporaryOrderService.setNewOrder();
             TemporaryOrderService.removeFromDatabase(HomePageController.getUsernameHome());
-            stage = (Stage) cancelOrder.getScene().getWindow();
-            stage.close();
         }
+        stage = (Stage) cancelOrder.getScene().getWindow();
+        stage.close();
     }
 
-    public void handleCancelOrder() {
-        // to be implemented
+    public void handleCancelOrder(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == cancelOrder) {
+            TemporaryOrderService.removeFromDatabase(HomePageController.getUsernameHome());
+        }
+        stage = (Stage) cancelOrder.getScene().getWindow();
+        stage.close();
     }
 
 }
