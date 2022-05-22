@@ -211,6 +211,64 @@ public class PopUpController {
             }
         }
 
+        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
+            count=3;
+            RAMService.setForDelete();
+            for (int i = 0; i < buttons.size(); i++) {
+                final int nr = i;
+                buttons.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event){
+                        for(int j=0;j<numeProduse.size();j++){
+                            if(nr==j){
+                                try {
+                                    nume=numeProduse.get(nr).getText();
+                                    Stage stage1=new Stage();
+                                    root= FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditInfo.fxml"));
+                                    Scene scene=new Scene(root);
+                                    stage1.setScene(scene);
+                                    stage1.setTitle("Edit this product");
+                                    stage1.show();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                buttons.get(nr).setVisible(false);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("SSD & HDD")) {
+            count=4;
+            SSD_HDDService.setForDelete();
+            for (int i = 0; i < buttons.size(); i++) {
+                final int nr = i;
+                buttons.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event){
+                        for(int j=0;j<numeProduse.size();j++){
+                            if(nr==j){
+                                try {
+                                    nume=numeProduse.get(nr).getText();
+                                    Stage stage1=new Stage();
+                                    root= FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpEditInfo.fxml"));
+                                    Scene scene=new Scene(root);
+                                    stage1.setScene(scene);
+                                    stage1.setTitle("Edit this product");
+                                    stage1.show();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                buttons.get(nr).setVisible(false);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
     }
 
     public void CloseEditPopUp(ActionEvent actionEvent) {
@@ -244,9 +302,7 @@ public class PopUpController {
         for (int i = 0; i < 10; i++) {
             numeProduse.add(i, new Text(nume));
             numeProduse.get(i).setLayoutX(0);
-            ;
             numeProduse.get(i).setLayoutY(3);
-            ;
             Pret[i] = new Text(pret);
             Descriere[i] = new Text(descriere);
             Specific[i] = new Text(specific);
@@ -336,6 +392,41 @@ public class PopUpController {
             }
         }
 
+        if(comboBox3.getSelectionModel().getSelectedItem().toString().equals("RAM")){
+            RAMService.setForDelete();
+            for(int i=0; i<buttons.size(); i++){
+                final int nr=i;
+                buttons.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        for(int j=0; j<numeProduse.size(); j++){
+                            if(nr == j){
+                                RAMService.deleteProduct(numeProduse.get(j).getText());
+                                buttons.get(nr).setVisible(false);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        if(comboBox3.getSelectionModel().getSelectedItem().toString().equals("SSD & HDD")){
+            SSD_HDDService.setForDelete();
+            for(int i=0; i<buttons.size(); i++){
+                final int nr=i;
+                buttons.get(i).setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        for(int j=0; j<numeProduse.size(); j++){
+                            if(nr == j){
+                                SSD_HDDService.deleteProduct(numeProduse.get(j).getText());
+                                buttons.get(nr).setVisible(false);
+                            }
+                        }
+                    }
+                });
+            }
+        }
     }
 
     public static int getNrP() {

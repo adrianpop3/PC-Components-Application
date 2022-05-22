@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.GraphicService;
 import org.loose.fis.sre.services.ProcessorService;
+import org.loose.fis.sre.services.RAMService;
+import org.loose.fis.sre.services.SSD_HDDService;
 
 public class PopUpEditInfoController {
 
@@ -33,6 +35,7 @@ public class PopUpEditInfoController {
     }
 
     public void edit(String nume) {
+
         if (PopUpController.getCount() == 1) {
             ProcessorService.editProduct(nume, Price.getText(), Specific.getText(), Description.getText(), Guarantee.getText());
         }
@@ -41,5 +44,12 @@ public class PopUpEditInfoController {
             GraphicService.editProduct(nume, Price.getText(), Specific.getText(), Description.getText(), Guarantee.getText());
         }
 
+        if (PopUpController.getCount() == 3) {
+            RAMService.editProduct(nume, Price.getText(), Specific.getText(), Description.getText(), Guarantee.getText());
+        }
+
+        if (PopUpController.getCount() == 4) {
+            SSD_HDDService.editProduct(nume, Price.getText(), Specific.getText(), Description.getText(), Guarantee.getText());
+        }
     }
 }

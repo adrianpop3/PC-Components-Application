@@ -95,7 +95,6 @@ public class HomePageController {
             root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpAddProduct.fxml"));
         }
 
-
         stage.setTitle("PCA - ADD PRODUCT");
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -34,20 +34,24 @@ public class GraphicService {
         }
     }
 
+    public static void closeDataBase() {
+        database.close();
+    }
+
     public static List<GraphicObj> getAllGraphicCards() {
         return GraphicRepository.find().toList();
     }
 
     public static void editProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
-        for(GraphicObj graphicBase : GraphicRepository.find())
+        for(GraphicObj graphicObj : GraphicRepository.find())
         {
-            if (numeProdus.equals(graphicBase.getNumeProdus())) {
-                graphicBase.setPret(Pret);
-                graphicBase.setSpecific(Specific);
-                graphicBase.setDescriere(Descriere);
-                graphicBase.setGarantie(Garantie);
+            if (numeProdus.equals(graphicObj.getNumeProdus())) {
+                graphicObj.setPret(Pret);
+                graphicObj.setSpecific(Specific);
+                graphicObj.setDescriere(Descriere);
+                graphicObj.setGarantie(Garantie);
                 deleteProduct(numeProdus);
-                GraphicRepository.insert(graphicBase);
+                GraphicRepository.insert(graphicObj);
             }
         }
     }
