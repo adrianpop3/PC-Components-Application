@@ -31,51 +31,51 @@ public class PopUpController {
     public ComboBox comboBox1, comboBox2, comboBox3;
     private static VBox vBox = new VBox();
 
-    private static int count=0;
+    private static int count = 0;
     private static List<Button> buttons = new ArrayList<Button>();
     private static List<Text> numeProduse = new ArrayList<Text>(10);
     private static String nume;
     private Parent root;
-    private static Text[] Pret= new Text[10];
-    private static Text[] Descriere=new Text[10];
-    private static Text[] Tip=new Text[10];
-    private static Text[] Garantie=new Text[10];
+    private static Text[] Pret = new Text[10];
+    private static Text[] Descriere = new Text[10];
+    private static Text[] Tip = new Text[10];
+    private static Text[] Garantie = new Text[10];
     private static Pane[] panels = new Pane[10];
 
     @FXML
     private TextField numeProdus, pret, specific, descriere, garantie;
-    private Stage stage=new Stage();
+    private Stage stage = new Stage();
     @FXML
-    private Button addit,CloseWindow,CloseWindow1,goback,confirmChange;
+    private Button addit, CloseWindow, CloseWindow1, goback, confirmChange;
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
-    private static int nrP=0;
-    private static int nrG=0;
+    private static int nrP = 0;
+    private static int nrG = 0;
 
 
-    private void initializeVbox(){
-        vBox.setPadding(new Insets(10,10,10,10));
+    private void initializeVbox() {
+        vBox.setPadding(new Insets(10, 10, 10, 10));
         vBox.setSpacing(50);
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
-        if(HomePageController.GetNr()==1) {
+        if (HomePageController.GetNr() == 1) {
             comboBox1.getItems().add("Processors");
             comboBox1.getItems().add("RAM");
             comboBox1.getItems().add("Graphic Cards");
             comboBox1.getItems().add("SSD & HDD");
         }
 
-        if(HomePageController.GetNr()==2){
+        if (HomePageController.GetNr() == 2) {
             comboBox2.getItems().add("Processors");
             comboBox2.getItems().add("RAM");
             comboBox2.getItems().add("Graphic Cards");
             comboBox2.getItems().add("SSD & HDD");
         }
 
-        if(HomePageController.GetNr()==3) {
+        if (HomePageController.GetNr() == 3) {
             comboBox3.getItems().add("Processors");
             comboBox3.getItems().add("RAM");
             comboBox3.getItems().add("Graphic Cards");
@@ -84,17 +84,17 @@ public class PopUpController {
     }
 
     private void initializeEdit() {
-        vBox=new VBox();
+        vBox = new VBox();
         initializeVbox();
 
-        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("Processors")){
+        if (comboBox1.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
             panelProcessors1.getChildren().add(vBox);
             panelProcessors1.setVisible(true);
             panelGraphic1.setVisible(false);
             panelRAM1.setVisible(false);
             panelSSD_HDD1.setVisible(false);
         }
-        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")){
+        if (comboBox1.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
             panelProcessors1.setVisible(false);
             panelGraphic1.getChildren().add(vBox);
             panelGraphic1.setVisible(true);
@@ -102,14 +102,14 @@ public class PopUpController {
             panelSSD_HDD1.setVisible(false);
 
         }
-        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("RAM")){
+        if (comboBox1.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
             panelProcessors1.setVisible(false);
             panelGraphic1.setVisible(false);
             panelRAM1.getChildren().add(vBox);
             panelRAM1.setVisible(true);
             panelSSD_HDD1.setVisible(false);
         }
-        if(comboBox1.getSelectionModel().getSelectedItem().toString().equals("SSD & HDD")){
+        if (comboBox1.getSelectionModel().getSelectedItem().toString().equals("SSD & HDD")) {
             panelProcessors1.setVisible(false);
             panelGraphic1.setVisible(false);
             panelRAM1.setVisible(false);
@@ -125,7 +125,7 @@ public class PopUpController {
             count = 1;
             ProcessorService.setForDelete();
 
-            for (int i=0; i<buttons.size(); i++) {
+            for (int i = 0; i < buttons.size(); i++) {
                 final int nr = i;
                 buttons.get(i).setOnAction(new EventHandler<ActionEvent>() {
 
@@ -158,23 +158,22 @@ public class PopUpController {
         stage.close();
     }
 
-    public static void getDataBase(String nume,String descriere,String pret,String tip,String garantie,String id){
+    public static void getDataBase(String nume, String descriere, String pret, String tip, String garantie, String id) {
 
-        if(HomePageController.GetNr()==1)
-        {
-            for(int i=0; i<10; i++)
-            {
-                buttons.add(i,new Button("Edit"));
+        if (HomePageController.GetNr() == 1) {
+            for (int i = 0; i < 10; i++) {
+                buttons.add(i, new Button("Edit"));
                 buttons.get(i).setLayoutX(620);
                 buttons.get(i).setId(id);
                 buttons.get(i).setStyle("-fx-background-color: #8a6a57; -fx-background-radius: 15px; -fx-text-fill: #154a44");
             }
         }
-        for(int i=0; i<10; i++)
-        {
-            numeProduse.add(i,new Text(nume));
-            numeProduse.get(i).setLayoutX(0);;
-            numeProduse.get(i).setLayoutY(3);;
+        for (int i = 0; i < 10; i++) {
+            numeProduse.add(i, new Text(nume));
+            numeProduse.get(i).setLayoutX(0);
+            ;
+            numeProduse.get(i).setLayoutY(3);
+            ;
             Pret[i] = new Text(pret);
             Descriere[i] = new Text(descriere);
             Tip[i] = new Text(tip);
@@ -187,35 +186,33 @@ public class PopUpController {
             Tip[i].setLayoutY(3);
             Garantie[i].setLayoutX(420);
             Garantie[i].setLayoutY(3);
-            panels[i]=new Pane();
+            panels[i] = new Pane();
             panels[i].setLayoutX(700);
             panels[i].setLayoutY(50);
-            panels[i].getChildren().addAll(numeProduse.get(i),Pret[i],Descriere[i],Tip[i],Garantie[i], buttons.get(i));
+            panels[i].getChildren().addAll(numeProduse.get(i), Pret[i], Descriere[i], Tip[i], Garantie[i], buttons.get(i));
         }
 
     }
 
-     public void addProduct(ActionEvent event)
-    {
-            if (numeProdus.getText().isEmpty() || pret.getText().isEmpty() || specific.getText().isEmpty() || descriere.getText().isEmpty() || garantie.getText().isEmpty()) {
-                alert.setTitle("Empty field found!");
-                alert.setHeaderText((String) null);
-                alert.setContentText("Please complete all the fields!");
-                alert.showAndWait();
+    public void addProduct(ActionEvent event) {
+        if (numeProdus.getText().isEmpty() || pret.getText().isEmpty() || specific.getText().isEmpty() || descriere.getText().isEmpty() || garantie.getText().isEmpty()) {
+            alert.setTitle("Empty field found!");
+            alert.setHeaderText((String) null);
+            alert.setContentText("Please complete all the fields!");
+            alert.showAndWait();
+        } else {
+            if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
+                ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                nrP++;
             }
-            else {
-                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
-                    ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                    nrP++;
-                }
-                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
-                    GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                    nrG++;
-                }
+            if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
+                GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                nrG++;
+            }
 
-                stage = (Stage) addit.getScene().getWindow();
-                stage.close();
-            }
+            stage = (Stage) addit.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public static int getNrP() {
@@ -224,5 +221,9 @@ public class PopUpController {
 
     public static int getNrG() {
         return nrG;
+    }
+
+    public static int getMaxNrProducts() {
+        return Math.max(nrG, nrP);
     }
 }
