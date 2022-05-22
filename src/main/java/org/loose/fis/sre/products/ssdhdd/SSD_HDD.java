@@ -83,7 +83,7 @@ public class SSD_HDD {
             // Add to cart button
             button.add(i, new Button("Add to cart"));
             button.get(i).setLayoutX(620);
-            button.get(i).setStyle("-fx-background-color: #20B2AA; -fx-background-radius: 15px; -fx-text-fill: #ffffff");
+            button.get(i).setStyle("-fx-background-color: #8a6a57; -fx-background-radius: 15px; -fx-text-fill: #A31010");
             button.get(i).setId(id);
 
             // Hide visibility of buttons for seller

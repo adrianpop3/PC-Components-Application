@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.exceptions.ProductAlreadyAdded;
 import org.loose.fis.sre.products.graphic.GraphicObj;
 import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.processors.ProcessorsObj;
@@ -65,7 +66,8 @@ public class ProcessorService {
         }
     }
 
-    public static void addProcessor(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
+    public static void addProcessor(String numeProdus, String pret, String specific, String descriere, String garantie, int id) throws ProductAlreadyAdded {
+        ErrorProductAlreadyAdded(numeProdus);
         ProcessorsRepository.insert(new ProcessorsObj(numeProdus, pret, specific, descriere, garantie, id));
     }
 
@@ -84,6 +86,16 @@ public class ProcessorService {
             }
         }
         return -1;
+    }
+
+    public static void ErrorProductAlreadyAdded(String nume) throws ProductAlreadyAdded {
+        for(ProcessorsObj processorsObj:ProcessorsRepository.find())
+        {
+            if(Objects.equals(nume,processorsObj.getNumeProdus()))
+            {
+                throw new ProductAlreadyAdded(nume);
+            }
+        }
     }
 
 }
