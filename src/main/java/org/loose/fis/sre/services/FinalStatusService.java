@@ -26,6 +26,15 @@ public class FinalStatusService {
         finalStatusObjectRepository.insert(new FinalStatus(sellerName, customerName, productName, quantity, status));
     }
 
+    public static void displaySellerOrderHistory(String sellerName) {
+        for (FinalStatus finalStatus : finalStatusObjectRepository.find()) {
+            if (finalStatus.getCustomerName().equals(sellerName)) {
+                int quantity = finalStatus.getQuantity();
+                OrderHistoryCustomerController.displayOrderHostory(finalStatus.getProductName(), finalStatus.getCustomerName(), Integer.toString(quantity), finalStatus.getStatus());
+            }
+        }
+    }
+
     public static void displayCustomerOrderHistory(String customerName) {
         for (FinalStatus finalStatus : finalStatusObjectRepository.find()) {
             if (finalStatus.getCustomerName().equals(customerName)) {
