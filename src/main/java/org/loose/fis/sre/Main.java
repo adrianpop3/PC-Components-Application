@@ -9,6 +9,7 @@ import org.loose.fis.sre.services.GraphicService;
 import org.loose.fis.sre.services.ProcessorService;
 import org.loose.fis.sre.services.TemporaryOrderService;
 import org.loose.fis.sre.services.UserService;
+import org.loose.fis.sre.services.*;
 
 public class Main extends Application {
 
@@ -17,6 +18,8 @@ public class Main extends Application {
         UserService.initDatabase();
         ProcessorService.initDataBaseProcessors();
         GraphicService.initDataBaseGraphic();
+        RAMService.initDataBaseRAM();
+        SSD_HDDService.initDataBaseSSDHDD();
         TemporaryOrderService.initDataBaseTemporaryOrder();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/pages/starting_page.fxml"));
         primaryStage.setTitle("PCA - START");

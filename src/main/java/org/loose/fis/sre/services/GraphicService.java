@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
 import org.loose.fis.sre.products.graphic.Graphic;
@@ -37,7 +38,7 @@ public class GraphicService {
         return GraphicRepository.find().toList();
     }
 
-    /*public static void EditProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
+    public static void editProduct(String numeProdus, String Pret, String Specific, String Descriere, String Garantie) {
         for(GraphicObj graphicBase : GraphicRepository.find())
         {
             if (numeProdus.equals(graphicBase.getNumeProdus())) {
@@ -45,10 +46,11 @@ public class GraphicService {
                 graphicBase.setSpecific(Specific);
                 graphicBase.setDescriere(Descriere);
                 graphicBase.setGarantie(Garantie);
+                deleteProduct(numeProdus);
                 GraphicRepository.insert(graphicBase);
             }
         }
-    }*/
+    }
 
     public static void setForDelete() {
         for (GraphicObj graphicBase : GraphicRepository.find()) {
@@ -61,6 +63,15 @@ public class GraphicService {
 
     public static void addGraphic(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
         GraphicRepository.insert(new GraphicObj(numeProdus, pret, specific, descriere, garantie, id));
+    }
+
+    public static void deleteProduct(String numeProdus){
+        for(GraphicObj graphicBase : GraphicRepository.find())
+        {
+            if(numeProdus.equals(graphicBase.getNumeProdus())){
+                GraphicRepository.remove(ObjectFilters.eq("numeProdus",numeProdus));
+            }
+        }
     }
 
     public static int returnProductId(String productName) {
