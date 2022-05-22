@@ -321,7 +321,7 @@ public class PopUpController {
             panels[i].getChildren().addAll(numeProduse.get(i), Pret[i], Specific[i], Descriere[i], Garantie[i], buttons.get(i));
         }
 
-        vBox.getChildren().add(panels[PopUpController.getNrP()]);
+        vBox.getChildren().add(panels[PopUpController.getMaxNrProducts()]);
 
     }
 

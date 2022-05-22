@@ -146,10 +146,10 @@ public class HomePageController {
         if(actionEvent.getSource() == approve){
             nr=4;
             stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("/fxml/PopUps/PopUpApproveDecline.fxml"));
-            //OrderService.setApproveDecline(HomePageController.getUsernameHome());
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpApproveDecline.fxml"));
+            OrderService.setApproveDecline(HomePageController.getUsernameHome());
         }
-        stage.setTitle("Accept/Decline order");
+        stage.setTitle("Approve/Decline order");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
