@@ -102,8 +102,17 @@ public class HomePageController {
         stage.show();
     }
 
-    public void handleDeleteProductAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleDeleteProductAction(ActionEvent actionEvent) throws IOException {
+        if(actionEvent.getSource() == delete){
+            nr=3;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpDeleteProduct.fxml"));
+        }
+
+        stage.setTitle("Delete a product");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleEditProductAction(ActionEvent actionEvent) throws Exception {
