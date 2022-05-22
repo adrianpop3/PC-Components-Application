@@ -77,9 +77,9 @@ public class TemporaryOrderService {
             if (!UserService.verifyUserId(random_next_1)) {
                 random_next_1 = random.nextInt(1000);
             }
-            OrderService.addOrder(temporaryOrder.getProductName(), temporaryOrder.getSellerName(),
-                    temporaryOrder.getCustomerName(), temporaryOrder.getQuantity(),
-                    "It is processing!", temporaryOrder.getIdCustomer(), random_next_1);
+            OrderService.addOrder(temporaryOrder.getSellerName(),temporaryOrder.getCustomerName(),temporaryOrder.getProductName(),
+                     temporaryOrder.getQuantity(),
+                    "It is processing", temporaryOrder.getIdCustomer(), random_next_1);
         }
     }
 

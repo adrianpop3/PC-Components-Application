@@ -18,6 +18,7 @@ public class Main extends Application {
         OrderService.initDataBaseOrder();
         RAMService.initDataBaseRAM();
         SSD_HDDService.initDataBaseSSDHDD();
+        FinalStatusService.initDataBaseFinalStatus();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/pages/starting_page.fxml"));
         primaryStage.setTitle("PCA - START");
         primaryStage.setScene(new Scene(root));

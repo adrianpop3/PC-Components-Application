@@ -146,8 +146,17 @@ public class HomePageController {
         //to be done
     }
 
-    public void handleOnViewStatusAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleOnViewStatusAction(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == status) {
+            nr = 7;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpOrderStatus.fxml"));
+            OrderService.displayOrderStatus(HomePageController.getUsernameHome());
+        }
+        stage.setTitle("PCA - ORDER STATUS");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleOnSellerHistoryAction(ActionEvent actionEvent) {
