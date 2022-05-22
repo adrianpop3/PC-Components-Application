@@ -1,5 +1,6 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.sre.services.TemporaryOrderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,6 @@ public class MyCartController {
 
     @FXML
     private Button placeOrder, cancelOrder;
-    @FXML
-    private CheckBox expressDelivery;
 
     @FXML
     public void initialize() {
@@ -38,9 +38,7 @@ public class MyCartController {
         anchorPane.getChildren().add(vBox);
     }
 
-
     public static void displayProducts(String productName, String productQuantity) {
-
         for (int i = 0; i < 10; i++) {
 
             // Name
@@ -59,19 +57,19 @@ public class MyCartController {
             pane[i].getChildren().addAll(name.get(i), quantity.get(i));
 
         }
-
         vBox.getChildren().add(pane[PopUpController.getMaxNrProducts()]);
     }
 
-    public void handlePlaceOrderAction() {
-        // to be implemented
+    public void handlePlaceOrderAction(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == placeOrder) {
+            TemporaryOrderService.setNewOrder();
+            TemporaryOrderService.removeFromDatabase(HomePageController.getUsernameHome());
+            stage = (Stage) cancelOrder.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void handleCancelOrder() {
-        // to be implemented
-    }
-
-    public void handleExpressDeliveryAction() {
         // to be implemented
     }
 
