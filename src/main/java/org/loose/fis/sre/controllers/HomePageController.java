@@ -142,8 +142,17 @@ public class HomePageController {
         stage.show();
     }
 
-    public void handleApproveOrderAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleApproveDeclineOrderAction(ActionEvent actionEvent) throws IOException {
+        if(actionEvent.getSource() == approve){
+            nr=4;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/PopUps/PopUpApproveDecline.fxml"));
+            //OrderService.setApproveDecline(HomePageController.getUsernameHome());
+        }
+        stage.setTitle("Accept/Decline order");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleOnViewStatusAction(ActionEvent actionEvent) {

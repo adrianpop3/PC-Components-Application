@@ -23,5 +23,9 @@ public class OrderService {
         orderObjectRepository.insert(new Order(sellerName, customerName, productName, quantity, status, customerId, orderId));
     }
 
+    public static void setApproveDecline(String numeSeller){
+        //to be done
+    }
+
 
 }
