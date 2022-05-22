@@ -79,6 +79,9 @@ public class TemporaryOrderService {
             }
             OrderService.addOrder(temporaryOrder.getSellerName(),temporaryOrder.getCustomerName(),temporaryOrder.getProductName(),
                     temporaryOrder.getQuantity(), "It is processing", temporaryOrder.getIdCustomer(), random_next_1);
+            OrderService.addOrder(temporaryOrder.getSellerName(),temporaryOrder.getCustomerName(),temporaryOrder.getProductName(),
+                     temporaryOrder.getQuantity(),
+                    "It is processing", temporaryOrder.getIdCustomer(), random_next_1);
         }
     }
 
