@@ -168,12 +168,30 @@ public class HomePageController {
         stage.show();
     }
 
-    public void handleOnSellerHistoryAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleOnSellerHistoryAction(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == sellerHistory) {
+            nr = 8;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpOrderHistorySeller.fxml"));
+            FinalStatusService.displaySellerOrderHistory(HomePageController.getUsernameHome());
+        }
+        stage.setTitle("PCA - ORDER HISTORY");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void handleOnCustomerHistoryAction(ActionEvent actionEvent) {
-        //to be done
+    public void handleOnCustomerHistoryAction(ActionEvent actionEvent) throws Exception {
+        if (actionEvent.getSource() == customerHistory) {
+            nr = 8;
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("/fxml/popUps/PopUpOrderHistoryCustomer.fxml"));
+            FinalStatusService.displayCustomerOrderHistory(HomePageController.getUsernameHome());
+        }
+        stage.setTitle("PCA - ORDER HISTORY");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void checkRoleForButtonVisibility() {

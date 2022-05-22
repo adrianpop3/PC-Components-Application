@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
-import org.loose.fis.sre.services.RAMService;
 import org.loose.fis.sre.services.SSD_HDDService;
 import org.loose.fis.sre.services.TemporaryOrderService;
 import org.loose.fis.sre.services.UserService;
