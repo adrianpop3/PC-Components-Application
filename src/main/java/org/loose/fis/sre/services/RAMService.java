@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.exceptions.ProductAlreadyAdded;
 import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.ram.RAM;
 import org.loose.fis.sre.products.ram.RAMObj;
@@ -66,7 +67,8 @@ public class RAMService {
         }
     }
 
-    public static void addRAM(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
+    public static void addRAM(String numeProdus, String pret, String specific, String descriere, String garantie, int id) throws ProductAlreadyAdded {
+        ErrorProductAlreadyAdded(numeProdus);
         RAMRepository.insert(new RAMObj(numeProdus, pret, specific, descriere, garantie, id));
     }
 
@@ -87,4 +89,11 @@ public class RAMService {
         return -1;
     }
 
-}
+    public static void ErrorProductAlreadyAdded(String nume) throws ProductAlreadyAdded {
+        for(RAMObj ramObj:RAMRepository.find())
+        {
+            if(Objects.equals(nume,ramObj.getNumeProdus()))
+                throw new ProductAlreadyAdded(nume);
+            }
+        }
+    }

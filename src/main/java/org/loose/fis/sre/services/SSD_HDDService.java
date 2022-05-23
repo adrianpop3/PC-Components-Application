@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.exceptions.ProductAlreadyAdded;
 import org.loose.fis.sre.products.processors.Processors;
 import org.loose.fis.sre.products.ssdhdd.SSD_HDD;
 import org.loose.fis.sre.products.ssdhdd.SSD_HDD_Obj;
@@ -65,7 +66,8 @@ public class SSD_HDDService {
         }
     }
 
-    public static void addSSDHDD(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
+    public static void addSSDHDD(String numeProdus, String pret, String specific, String descriere, String garantie, int id) throws ProductAlreadyAdded {
+        ErrorProductAlreadyAdded(numeProdus);
         SSDHDDRepository.insert(new SSD_HDD_Obj(numeProdus, specific, pret, descriere, garantie, id));
     }
 
@@ -85,6 +87,16 @@ public class SSD_HDDService {
             }
         }
         return -1;
+    }
+
+    public static void ErrorProductAlreadyAdded(String nume) throws ProductAlreadyAdded {
+        for(SSD_HDD_Obj ssd_hdd_obj:SSDHDDRepository.find())
+        {
+            if(Objects.equals(nume,ssd_hdd_obj.getNumeProdus()))
+            {
+                throw new ProductAlreadyAdded(nume);
+            }
+        }
     }
 
 }

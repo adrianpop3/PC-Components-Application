@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.loose.fis.sre.controllers.HomePageController;
 import org.loose.fis.sre.controllers.PopUpController;
+import org.loose.fis.sre.exceptions.ProductAlreadyAdded;
 import org.loose.fis.sre.products.graphic.Graphic;
 import org.loose.fis.sre.products.graphic.GraphicObj;
 
@@ -65,7 +66,8 @@ public class GraphicService {
         }
     }
 
-    public static void addGraphic(String numeProdus, String pret, String specific, String descriere, String garantie, int id) {
+    public static void addGraphic(String numeProdus, String pret, String specific, String descriere, String garantie, int id) throws ProductAlreadyAdded {
+        ErrorProductAlreadyAdded(numeProdus);
         GraphicRepository.insert(new GraphicObj(numeProdus, pret, specific, descriere, garantie, id));
     }
 
@@ -85,5 +87,16 @@ public class GraphicService {
             }
         }
         return -1;
+    }
+
+    public static void ErrorProductAlreadyAdded(String nume) throws ProductAlreadyAdded
+    {
+        for(GraphicObj graphicObj:GraphicRepository.find())
+        {
+            if(Objects.equals(nume,graphicObj.getNumeProdus()))
+            {
+                throw new ProductAlreadyAdded(nume);
+            }
+        }
     }
 }

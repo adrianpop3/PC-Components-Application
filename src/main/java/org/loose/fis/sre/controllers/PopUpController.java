@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;
+import org.loose.fis.sre.exceptions.ProductAlreadyAdded;
 import org.loose.fis.sre.services.*;
 
 import java.util.List;
@@ -321,37 +322,46 @@ public class PopUpController {
             panels[i].getChildren().addAll(numeProduse.get(i), Pret[i], Specific[i], Descriere[i], Garantie[i], buttons.get(i));
         }
 
-        vBox.getChildren().add(panels[PopUpController.getNrP()]);
+        vBox.getChildren().add(panels[PopUpController.getMaxNrProducts()]);
 
     }
 
-    public void addProduct(ActionEvent event) {
-        if (numeProdus.getText().isEmpty() || pret.getText().isEmpty() || specific.getText().isEmpty() || descriere.getText().isEmpty() || garantie.getText().isEmpty()) {
-            alert.setTitle("Empty field found!");
-            alert.setHeaderText((String) null);
-            alert.setContentText("Please complete all the fields!");
-            alert.showAndWait();
-        } else {
-            if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
-                ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                nrP++;
-            }
-            if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
-                GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                nrG++;
-            }
-            if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
-                RAMService.addRAM(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                nrR++;
-            }
-            if (comboBox2.getSelectionModel().getSelectedItem().equals("SSD & HDD")) {
-                SSD_HDDService.addSSDHDD(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
-                nrM++;
-            }
+    public void addProduct(ActionEvent event) throws Exception {
+        try{
 
-            stage = (Stage) addit.getScene().getWindow();
-            stage.close();
-        }
+            if (numeProdus.getText().isEmpty() || pret.getText().isEmpty() || specific.getText().isEmpty() || descriere.getText().isEmpty() || garantie.getText().isEmpty()) {
+                alert.setTitle("Empty field found!");
+                alert.setHeaderText((String) null);
+                alert.setContentText("Please complete all the fields!");
+                alert.showAndWait();
+            } else {
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Processors")) {
+                    ProcessorService.addProcessor(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrP++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("Graphic Cards")) {
+                    GraphicService.addGraphic(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrG++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().toString().equals("RAM")) {
+                    RAMService.addRAM(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrR++;
+                }
+                if (comboBox2.getSelectionModel().getSelectedItem().equals("SSD & HDD")) {
+                    SSD_HDDService.addSSDHDD(numeProdus.getText(), pret.getText(), specific.getText(), descriere.getText(), garantie.getText(), UserService.returnId(HomePageController.getUsernameHome()));
+                    nrM++;
+                }
+
+                    stage = (Stage) addit.getScene().getWindow();
+                    stage.close();
+                }
+            }catch (ProductAlreadyAdded exp)
+            {
+                alert.setTitle("Product " + exp.getMessage() +" already added.");
+                alert.setHeaderText((String) null);
+                alert.setContentText("Please choose another name for your product");
+                alert.showAndWait();
+            }
     }
 
     public void initializeDeletePopUp(ActionEvent event) {
