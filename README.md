@@ -1,4 +1,4 @@
-# PC Components Application
+# PC Components Application - Online Store Application
 A JavaFX Application using the following technologies:
 * [Java 15 or 16](https://www.oracle.com/java/technologies/javase-downloads.html)
 * [JavaFX](https://openjfx.io/openjfx-docs/) (as GUI)
